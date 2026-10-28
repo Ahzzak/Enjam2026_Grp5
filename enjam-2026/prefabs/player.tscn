@@ -1,21 +1,114 @@
 [gd_scene format=3 uid="uid://c0o3frsrsxts4"]
 
 [ext_resource type="Script" uid="uid://c2dqnulv6s8vl" path="res://scripts/player.gd" id="1_4dohe"]
-[ext_resource type="Texture2D" uid="uid://bku4nmx6ar351" path="res://visuals/615-6151326_sad-keanu-png.png" id="1_72ieh"]
+[ext_resource type="Texture2D" uid="uid://d0r3vc2yxw26" path="res://visuals/Character/SP_Dive.png" id="2_8rb0w"]
+[ext_resource type="Texture2D" uid="uid://beh01x34vu50r" path="res://visuals/Character/SP_Fall.png" id="3_sd3sa"]
+[ext_resource type="Texture2D" uid="uid://c54r0tmprgsg2" path="res://visuals/Character/SP_Idle_1.png" id="4_m2qjg"]
+[ext_resource type="Texture2D" uid="uid://djaggm3vjnurp" path="res://visuals/Character/SP_Idle_2.png" id="5_llb5v"]
+[ext_resource type="Texture2D" uid="uid://cdijuqlqaqgph" path="res://visuals/Character/SP_Jump.png" id="6_x0bak"]
+[ext_resource type="Texture2D" uid="uid://v5vlgde7cx5b" path="res://visuals/Character/SP_Run_1.png" id="7_lulei"]
+[ext_resource type="Texture2D" uid="uid://b10f8kerkdvk1" path="res://visuals/Character/SP_Run_2.png" id="8_edtk3"]
+[ext_resource type="Texture2D" uid="uid://c4xcfsxlkgu1u" path="res://visuals/Character/SP_Run_3.png" id="9_q2wkl"]
+[ext_resource type="Texture2D" uid="uid://cdwnl0mtnmwx5" path="res://visuals/Character/SP_Run_4.png" id="10_f2e50"]
+[ext_resource type="Texture2D" uid="uid://kk57ivyboc6i" path="res://visuals/Character/SP_Slide.png" id="11_22xyk"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xti4w"]
-radius = 110.0
-height = 520.0
+radius = 55.0
+height = 260.0
 
-[node name="PlayerCharacter" type="CharacterBody2D" unique_id=776062280 node_paths=PackedStringArray("sprite")]
-scale = Vector2(0.5, 0.5)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4dohe"]
+radius = 50.0
+height = 220.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_stj53"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_8rb0w")
+}],
+"loop": 1,
+"name": &"dive",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_sd3sa")
+}],
+"loop": 1,
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_m2qjg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_llb5v")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_x0bak")
+}],
+"loop": 1,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_lulei")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_edtk3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_q2wkl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_f2e50")
+}],
+"loop": 1,
+"name": &"run",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_22xyk")
+}],
+"loop": 1,
+"name": &"slide",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_stj53"]
+size = Vector2(100, 150)
+
+[node name="PlayerCharacter" type="CharacterBody2D" unique_id=776062280]
 script = ExtResource("1_4dohe")
-sprite = NodePath("Sprite2D")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=749314132]
-position = Vector2(-1, 0)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("1_72ieh")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1606157982]
+[node name="StandShape" type="CollisionShape2D" parent="." unique_id=1606157982]
+position = Vector2(0, -130)
 shape = SubResource("CapsuleShape2D_xti4w")
+
+[node name="SlideShape" type="CollisionShape2D" parent="." unique_id=770211664]
+position = Vector2(0, -50)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_4dohe")
+disabled = true
+
+[node name="Visual" type="Node2D" parent="." unique_id=418003249]
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Visual" unique_id=226771862]
+sprite_frames = SubResource("SpriteFrames_stj53")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.44645125
+offset = Vector2(0, -128)
+
+[node name="CeilingCheck" type="ShapeCast2D" parent="." unique_id=280805867]
+position = Vector2(0, -185)
+shape = SubResource("RectangleShape2D_stj53")
+target_position = Vector2(0, 0)

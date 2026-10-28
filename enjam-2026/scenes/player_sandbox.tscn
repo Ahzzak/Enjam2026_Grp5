@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://bl8ffqiouers8"]
+
+[ext_resource type="PackedScene" uid="uid://c0o3frsrsxts4" path="res://prefabs/player.tscn" id="1_4d21g"]
+[ext_resource type="Script" uid="uid://bhxnd15of8akm" path="res://scripts/player_sandbox.gd" id="1_6twx4"]
+[ext_resource type="Texture2D" uid="uid://q5hq7v7s00g" path="res://icon.svg" id="3_yla5c"]
+[ext_resource type="Script" uid="uid://cg7r1nj3beiwb" path="res://scripts/run_camera.gd" id="4_6bre8"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6twx4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1jsjn"]
+size = Vector2(300, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lquo2"]
+size = Vector2(400, 40)
+
+[node name="PlayerSandbox" type="Node2D" unique_id=1608617610 node_paths=PackedStringArray("player")]
+script = ExtResource("1_6twx4")
+player = NodePath("PlayerCharacter")
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=487314904]
+repeat_size = Vector2(1920, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=547097549]
+position = Vector2(960, 540)
+scale = Vector2(14.984374, 8.390625)
+texture = ExtResource("3_yla5c")
+
+[node name="PlayerCharacter" parent="." unique_id=776062280 instance=ExtResource("1_4d21g")]
+position = Vector2(400, 1000)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=243611695 node_paths=PackedStringArray("player")]
+anchor_mode = 0
+script = ExtResource("4_6bre8")
+player = NodePath("../PlayerCharacter")
+
+[node name="Floor" type="StaticBody2D" parent="." unique_id=1022299534]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=1248932675]
+position = Vector2(0, 1020)
+shape = SubResource("WorldBoundaryShape2D_6twx4")
+
+[node name="Platform" type="StaticBody2D" parent="." unique_id=129069597]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform" unique_id=2084894293]
+position = Vector2(800, 637.11)
+shape = SubResource("RectangleShape2D_1jsjn")
+one_way_collision = true
+
+[node name="Platform2" type="StaticBody2D" parent="." unique_id=359821409]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform2" unique_id=1396905829]
+position = Vector2(800, 251)
+shape = SubResource("RectangleShape2D_1jsjn")
+one_way_collision = true
+
+[node name="LowPlatform" type="StaticBody2D" parent="." unique_id=1387572212]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LowPlatform" unique_id=1059849259]
+position = Vector2(1500, 840)
+shape = SubResource("RectangleShape2D_lquo2")
