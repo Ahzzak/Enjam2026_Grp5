@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://wywhxhg7v5ph"]
 
 [ext_resource type="Texture2D" uid="uid://q5hq7v7s00g" path="res://icon.svg" id="1_nnsk1"]
+[ext_resource type="Script" uid="uid://dkru4epdgxe8t" path="res://scripts/game_manager.gd" id="1_qfnet"]
 [ext_resource type="PackedScene" uid="uid://c0o3frsrsxts4" path="res://prefabs/player.tscn" id="2_rwgxs"]
 [ext_resource type="PackedScene" uid="uid://dcoiqsaod757h" path="res://prefabs/audio_manager.tscn" id="3_4wyf3"]
 [ext_resource type="Script" uid="uid://cg7r1nj3beiwb" path="res://scripts/run_camera.gd" id="3_71j4m"]
@@ -9,6 +10,10 @@
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dn1u1"]
 
 [node name="World" type="Node2D" unique_id=533268812]
+
+[node name="GameManager" type="Node" parent="." unique_id=393617811 node_paths=PackedStringArray("player")]
+script = ExtResource("1_qfnet")
+player = NodePath("../PlayerCharacter")
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=211062778]
 repeat_size = Vector2(1920, 0)

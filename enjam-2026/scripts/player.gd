@@ -69,6 +69,11 @@ var state: State = State.RUN:
 
 var is_running: bool = false
 
+var controls_enabled: bool = true
+
+##Pour la fin
+var speed_scale: float = 1.0
+
 ## Position de course, calée sur la musique. La caméra la suit.
 var anchor_x: float:
 	get:
@@ -98,11 +103,13 @@ func _ready() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("Jump"):
+	if event.is_action_pressed("Jump") and controls_enabled:
 		_time_since_jump_press = 0.0
 
 
 func _physics_process(delta: float) -> void:
+	if delta <= 0.0:
+		return
 	_update_run_input()
 	match state:
 		State.RUN:
@@ -129,7 +136,9 @@ func _physics_process(delta: float) -> void:
 
 
 func _update_run_input() -> void:
-	var pressed := Input.is_action_pressed("Run")
+	if not controls_enabled:
+		return
+	var pressed := _action_pressed("Run")
 	if pressed == is_running:
 		return
 	is_running = pressed
@@ -141,23 +150,23 @@ func _update_run_input() -> void:
 
 
 func _physics_run(_delta: float) -> void:
-	if not Input.is_action_pressed("Slide"):
+	if not _action_pressed("Slide"):
 		_slide_exhausted = false
 	if _try_jump():
 		return
 	if not is_on_floor():
 		state = State.AIR
-	elif Input.is_action_pressed("Slide") and not _slide_exhausted:
+	elif _action_pressed("Slide") and not _slide_exhausted:
 		state = State.SLIDE
 
 
 func _physics_air(delta: float) -> void:
 	if _try_jump():
 		return
-	if Input.is_action_just_pressed("Slide"):
+	if _action_just_pressed("Slide"):
 		state = State.DIVE
 		return
-	if velocity.y < -min_jump_speed and not Input.is_action_pressed("Jump"):
+	if velocity.y < -min_jump_speed and not _action_pressed("Jump"):
 		velocity.y = -min_jump_speed
 	var current_gravity: float
 	if velocity.y < 0.0:
@@ -178,7 +187,7 @@ func _physics_slide(_delta: float) -> void:
 		and _anchor_offset <= -max_slide_lag + OFFSET_TOLERANCE
 	if not is_on_floor():
 		state = State.AIR
-	elif (exhausted or not Input.is_action_pressed("Slide")) and can_stand_up:
+	elif (exhausted or not _action_pressed("Slide")) and can_stand_up:
 		_slide_exhausted = exhausted
 		state = State.RUN
 
@@ -207,13 +216,21 @@ func _can_stand_up() -> bool:
 	return not _ceiling_check.is_colliding()
 
 
+func _action_pressed(action: StringName) -> bool:
+	return controls_enabled and Input.is_action_pressed(action)
+
+
+func _action_just_pressed(action: StringName) -> bool:
+	return controls_enabled and Input.is_action_just_pressed(action)
+
+
 func _update_horizontal(delta: float) -> void:
-	var speed := run_speed if _has_started else 0.0
+	var speed := run_speed * speed_scale if _has_started else 0.0
 	if _boost_speed > 0.0:
 		velocity.x = speed + _boost_speed
 		_boost_speed = maxf(_boost_speed - slide_deceleration * delta, 0.0)
 	else:
-		var return_speed := run_speed * anchor_return_ratio
+		var return_speed := run_speed * speed_scale * anchor_return_ratio
 		var target_offset := -max_slide_lag if state == State.SLIDE and _has_started else 0.0
 		velocity.x = speed + clampf((target_offset - _anchor_offset) / delta, -return_speed, return_speed)
 	_anchor_x += speed * delta
@@ -231,7 +248,7 @@ func _add_boost(distance: float) -> void:
 func _update_animation() -> void:
 	match state:
 		State.RUN:
-			_sprite.play("run" if _has_started else "idle")
+			_sprite.play("run" if _has_started and speed_scale > 0.0 else "idle")
 		State.AIR:
 			_sprite.play("jump" if velocity.y < 0.0 else "fall")
 		State.SLIDE:

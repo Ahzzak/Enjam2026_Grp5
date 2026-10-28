@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c0o3frsrsxts4" path="res://prefabs/player.tscn" id="1_4d21g"]
 [ext_resource type="Script" uid="uid://bhxnd15of8akm" path="res://scripts/player_sandbox.gd" id="1_6twx4"]
+[ext_resource type="Script" uid="uid://dkru4epdgxe8t" path="res://scripts/game_manager.gd" id="2_54elx"]
 [ext_resource type="Texture2D" uid="uid://q5hq7v7s00g" path="res://icon.svg" id="3_yla5c"]
 [ext_resource type="Script" uid="uid://cg7r1nj3beiwb" path="res://scripts/run_camera.gd" id="4_6bre8"]
 
@@ -16,6 +17,10 @@ size = Vector2(400, 40)
 [node name="PlayerSandbox" type="Node2D" unique_id=1608617610 node_paths=PackedStringArray("player")]
 script = ExtResource("1_6twx4")
 player = NodePath("PlayerCharacter")
+
+[node name="GameManager" type="Node" parent="." unique_id=1214947442 node_paths=PackedStringArray("player")]
+script = ExtResource("2_54elx")
+player = NodePath("../PlayerCharacter")
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=487314904]
 repeat_size = Vector2(1920, 0)
