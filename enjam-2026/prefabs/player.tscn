@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://c0o3frsrsxts4"]
+
+[ext_resource type="Script" uid="uid://c2dqnulv6s8vl" path="res://scripts/player.gd" id="1_4dohe"]
+[ext_resource type="Texture2D" uid="uid://bku4nmx6ar351" path="res://visuals/615-6151326_sad-keanu-png.png" id="1_72ieh"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xti4w"]
+radius = 110.0
+height = 520.0
+
+[node name="Node2D" type="CharacterBody2D" unique_id=776062280 node_paths=PackedStringArray("sprite")]
+script = ExtResource("1_4dohe")
+sprite = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=749314132]
+position = Vector2(-1, 0)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_72ieh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1606157982]
+shape = SubResource("CapsuleShape2D_xti4w")
