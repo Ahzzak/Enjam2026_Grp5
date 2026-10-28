@@ -28,9 +28,7 @@ func _process(delta: float) -> void:
 		check_part()
 	last_time = curr_time
 	
-	var scale : float = 1.0 if player.is_running else 0.5
-	Engine.time_scale = scale
-	music.pitch_scale = scale
+	music.pitch_scale = maxf(Engine.time_scale, 0.01)
 
 func check_part():
 	if curr_time % 3 == 0 :

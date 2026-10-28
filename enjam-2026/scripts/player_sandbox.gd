@@ -2,10 +2,16 @@ extends Node2D
 
 @export var player: Player
 
+var release_factor: float = 1.0
+
 
 func _ready() -> void:
 	player.run_released.connect(_on_player_run_released)
 	player.run_resumed.connect(_on_player_run_resumed)
+
+
+func _process(_delta: float) -> void:
+	Engine.time_scale = maxf(0.0001, release_factor)
 
 
 func _on_player_run_released() -> void:
