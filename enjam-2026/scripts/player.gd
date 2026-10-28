@@ -1,12 +1,14 @@
 extends CharacterBody2D
 
 @export var sprite : Sprite2D
+@export var parallax : Parallax2D
 
 const SPEED = 400.0
 const JUMP_VELOCITY = -1500.0
 const GRAVITY = Vector2(0.0,3500.0)
 
 var is_moving : bool = false
+var scroll_speed : float
 
 func _ready() -> void:
 	flip_loop()
@@ -24,12 +26,13 @@ func _physics_process(delta: float) -> void:
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("MoveLeft", "MoveRight")
 	if direction:
-		velocity.x = direction * SPEED
+		scroll_speed = direction * SPEED
 		is_moving = true
 	else:
-		velocity.x = move_toward(velocity.x, 12, SPEED)
+		scroll_speed = move_toward(velocity.x, 12, SPEED)
 		is_moving = false
-
+	parallax.autoscroll.x = -scroll_speed
+	$"../Spawner".autoscroll.x = -scroll_speed
 	move_and_slide()
 
 func flip_loop():
