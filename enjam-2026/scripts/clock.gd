@@ -1,8 +1,8 @@
 extends Node
 class_name Clock
 
-@export var player: CharacterBody2D
-@export var music : AudioStreamPlayer2D
+@export var player: Player
+@export var music : AudioStreamPlayer
 
 var bpm : int = 144
 var clock128 : float
@@ -20,7 +20,7 @@ func _process(delta: float) -> void:
 	curr_time = floor((timer / 60 * bpm))
 	if curr_time != last_time:
 		check_beat()
-		$AudioStreamPlayer2D.play()
+		$Click.play()
 		if music.playing == false :
 			music.play()
 			curr_time = 0
@@ -28,7 +28,7 @@ func _process(delta: float) -> void:
 		check_part()
 	last_time = curr_time
 	
-	var scale : float = clampf(player.scroll_speed / 400, 0.5 , 1)
+	var scale : float = 1.0 if player.is_running else 0.5
 	Engine.time_scale = scale
 	music.pitch_scale = scale
 
