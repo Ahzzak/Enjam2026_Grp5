@@ -7,7 +7,8 @@
 radius = 110.0
 height = 520.0
 
-[node name="Node2D" type="CharacterBody2D" unique_id=776062280 node_paths=PackedStringArray("sprite")]
+[node name="PlayerCharacter" type="CharacterBody2D" unique_id=776062280 node_paths=PackedStringArray("sprite")]
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_4dohe")
 sprite = NodePath("Sprite2D")
 

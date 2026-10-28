@@ -10,7 +10,7 @@ size = Vector2(2281.5, 63)
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=211062778]
 repeat_size = Vector2(1920, 0)
-autoscroll = Vector2(-100, 0)
+autoscroll = Vector2(-500, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=972846308]
 position = Vector2(960, 540)
@@ -20,10 +20,10 @@ texture = ExtResource("1_nnsk1")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1762616151]
 offset = Vector2(960, 540)
 
-[node name="Node2D" parent="." unique_id=776062280 instance=ExtResource("2_rwgxs")]
+[node name="PlayerCharacter" parent="." unique_id=776062280 instance=ExtResource("2_rwgxs")]
 
 [node name="Floor" type="StaticBody2D" parent="." unique_id=1606272559]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=457166848]
-position = Vector2(1057.25, 1089)
+position = Vector2(1062, 1049)
 shape = SubResource("RectangleShape2D_xti4w")
