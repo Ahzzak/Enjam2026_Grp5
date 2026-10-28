@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://c3jo64cpug3p"]
+
+[ext_resource type="Script" uid="uid://dwf6mpi6cijtf" path="res://scripts/spawner.gd" id="1_8khw6"]
+
+[node name="Spawner" type="Parallax2D" unique_id=189585124]
+script = ExtResource("1_8khw6")
