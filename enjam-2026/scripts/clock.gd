@@ -25,6 +25,7 @@ func _process(delta: float) -> void:
 	if !is_msc_started: return
 	timer += delta
 	curr_time = floor((timer / 60 * (bpm * 2)))
+
 	if curr_time != last_time:
 		check_beat()
 	last_time = curr_time
@@ -43,7 +44,7 @@ func start_music():
 func check_beat() -> void:
 	var bar : int = curr_time / 4 / 2
 	var beat : int = curr_time % 32
-	print(beat, " // ", bar)
+	#print(bar, " // ", beat)
 
 	if beat == 0:
 		beat = 32
@@ -52,10 +53,10 @@ func check_beat() -> void:
 
 	if beat % 8 == 1:
 		check_bar(bar)
-	if beat == 8: delay_music.emit()
+	if beat == 10: delay_music.emit()
 
 func check_bar(bar : int):
-	var transitions : Array[int] = [8, 16, 24, 30, 38, 46, 56, 64, 71]
+	var transitions : Array[int] = [8, 16, 24, 30, 34, 38, 46, 56, 64, 71]
 	if bar in transitions:
 		on_end_part.emit()
 
@@ -64,7 +65,7 @@ func _on_music_finished() -> void:
 	if part_loop > playlist.size():
 		part_loop = 0
 	part_loop = part_loop + 1
-	print("loop : ", part_loop)
+	#print("loop : ", part_loop)
 	music.stream = playlist.get(part_loop)
 	music.play()
 	on_end_part.emit()

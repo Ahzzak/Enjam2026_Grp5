@@ -20,11 +20,16 @@ run_camera = NodePath("../Camera2D")
 
 [node name="PlayerCharacter" parent="." unique_id=776062280 instance=ExtResource("2_rwgxs")]
 position = Vector2(1141, 917)
+run_speed = 1500.0
+jump_height = 350.0
+time_to_land = 0.1
+slide_stop_time = 0.5
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1762616151 node_paths=PackedStringArray("player")]
 anchor_mode = 0
 script = ExtResource("3_71j4m")
 player = NodePath("../PlayerCharacter")
+screen_x = 600.0
 
 [node name="Floor" type="StaticBody2D" parent="." unique_id=1606272559]
 
