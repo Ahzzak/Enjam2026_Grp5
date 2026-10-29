@@ -1,0 +1,109 @@
+[gd_scene format=3 uid="uid://pj5dbnhqno0y"]
+
+[ext_resource type="Texture2D" uid="uid://dx7o70iwqeb2f" path="res://visuals/AT_Cloud_1.tres" id="1_ffoes"]
+[ext_resource type="Texture2D" uid="uid://cflsks6bgm6wq" path="res://visuals/AT_Cloud_2.tres" id="2_3u8p4"]
+[ext_resource type="Texture2D" uid="uid://dswon1rh03nxw" path="res://visuals/AT_Cloud_3.tres" id="3_w12fg"]
+[ext_resource type="Texture2D" uid="uid://5hqet3tvsx0s" path="res://visuals/AT_Skyline.tres" id="4_fr8ag"]
+[ext_resource type="Texture2D" uid="uid://skj6b6l4vv" path="res://visuals/AT_City.tres" id="5_vrhmp"]
+[ext_resource type="Texture2D" uid="uid://cq3gq8exatg4s" path="res://visuals/AT_Fence.tres" id="6_48ipw"]
+[ext_resource type="Texture2D" uid="uid://bv7ahqq3ar3ql" path="res://visuals/AT_Ground.tres" id="7_8gkl7"]
+
+[sub_resource type="Gradient" id="Gradient_7g60a"]
+offsets = PackedFloat32Array(0, 0.75)
+colors = PackedColorArray(0.96862745, 0.7137255, 0.2901961, 1, 0.99215686, 0.8901961, 0.627451, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lixwb"]
+gradient = SubResource("Gradient_7g60a")
+fill_to = Vector2(0, 1)
+
+[node name="Decor" type="Node2D" unique_id=1222075053]
+
+[node name="Sky" type="CanvasLayer" parent="." unique_id=473819426]
+layer = -1
+
+[node name="Gradient" type="TextureRect" parent="Sky" unique_id=1412290482]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_lixwb")
+expand_mode = 1
+
+[node name="Clouds" type="Parallax2D" parent="." unique_id=529777360]
+scroll_scale = Vector2(0.05, 1)
+repeat_size = Vector2(2600, 0)
+autoscroll = Vector2(-20, 0)
+
+[node name="Cloud1" type="Sprite2D" parent="Clouds" unique_id=1732983822]
+position = Vector2(1350, 60)
+texture = ExtResource("1_ffoes")
+centered = false
+
+[node name="Cloud2" type="Sprite2D" parent="Clouds" unique_id=1856482053]
+position = Vector2(820, 250)
+texture = ExtResource("2_3u8p4")
+centered = false
+
+[node name="Cloud2b" type="Sprite2D" parent="Clouds" unique_id=1982283926]
+position = Vector2(2050, 190)
+texture = ExtResource("2_3u8p4")
+centered = false
+flip_h = true
+
+[node name="Cloud3" type="Sprite2D" parent="Clouds" unique_id=2044965013]
+position = Vector2(180, 90)
+texture = ExtResource("3_w12fg")
+centered = false
+
+[node name="Skyline" type="Parallax2D" parent="." unique_id=464947537]
+scroll_scale = Vector2(0.2, 1)
+repeat_size = Vector2(777.4, 0)
+repeat_times = 7
+
+[node name="Sprite2D" type="Sprite2D" parent="Skyline" unique_id=1325735288]
+self_modulate = Color(1, 1, 1, 0.7490196)
+position = Vector2(0, 310)
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("4_fr8ag")
+centered = false
+
+[node name="City" type="Parallax2D" parent="." unique_id=888156620]
+scroll_scale = Vector2(0.5, 1)
+repeat_size = Vector2(640, 0)
+repeat_times = 7
+
+[node name="Sprite2D" type="Sprite2D" parent="City" unique_id=1670484800]
+position = Vector2(0, 360)
+texture = ExtResource("5_vrhmp")
+centered = false
+
+[node name="Ground" type="Parallax2D" parent="." unique_id=815608434]
+repeat_size = Vector2(704, 0)
+repeat_times = 7
+
+[node name="FenceA" type="Sprite2D" parent="Ground" unique_id=612823119]
+position = Vector2(0, 710)
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("6_48ipw")
+centered = false
+
+[node name="FenceB" type="Sprite2D" parent="Ground" unique_id=1403514327]
+position = Vector2(352, 710)
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("6_48ipw")
+centered = false
+
+[node name="Strip" type="Sprite2D" parent="Ground" unique_id=1886207697]
+position = Vector2(0, 816)
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("7_8gkl7")
+centered = false
+
+[node name="Soil" type="ColorRect" parent="Ground" unique_id=2109260906]
+offset_top = 1075.0
+offset_right = 704.0
+offset_bottom = 1675.0
+mouse_filter = 2
+color = Color(0.39607844, 0.17254902, 0.007843138, 1)

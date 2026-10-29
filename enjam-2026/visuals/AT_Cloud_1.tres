@@ -1,8 +1,7 @@
 [gd_resource type="AtlasTexture" format=3 uid="uid://dx7o70iwqeb2f"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_76cd6"]
-load_path = "res://.godot/imported/T_Tilemap.png-995542130be891530cd295fc9270cb7a.ctex"
+[ext_resource type="Texture2D" uid="uid://bcrq7hlcjgw00" path="res://visuals/T_SpriteSheet.png" id="1_vk2ns"]
 
 [resource]
-atlas = SubResource("CompressedTexture2D_76cd6")
+atlas = ExtResource("1_vk2ns")
 region = Rect2(664, 554, 227, 147)

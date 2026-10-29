@@ -1,17 +1,11 @@
 [gd_scene format=3 uid="uid://wywhxhg7v5ph"]
 
 [ext_resource type="Script" uid="uid://dkru4epdgxe8t" path="res://scripts/game_manager.gd" id="1_qfnet"]
-[ext_resource type="Texture2D" uid="uid://5hqet3tvsx0s" path="res://visuals/AT_Skyline.tres" id="2_4mrxx"]
-[ext_resource type="Texture2D" uid="uid://skj6b6l4vv" path="res://visuals/AT_City.tres" id="2_qfnet"]
+[ext_resource type="PackedScene" uid="uid://pj5dbnhqno0y" path="res://prefabs/decor.tscn" id="2_qfnet"]
 [ext_resource type="PackedScene" uid="uid://c0o3frsrsxts4" path="res://prefabs/player.tscn" id="2_rwgxs"]
-[ext_resource type="Texture2D" uid="uid://dx7o70iwqeb2f" path="res://visuals/AT_Cloud_1.tres" id="2_w7kh3"]
 [ext_resource type="PackedScene" uid="uid://dcoiqsaod757h" path="res://prefabs/audio_manager.tscn" id="3_4wyf3"]
 [ext_resource type="Script" uid="uid://cg7r1nj3beiwb" path="res://scripts/run_camera.gd" id="3_71j4m"]
-[ext_resource type="Texture2D" uid="uid://cflsks6bgm6wq" path="res://visuals/AT_Cloud_2.tres" id="3_e3hyu"]
-[ext_resource type="Texture2D" uid="uid://cq3gq8exatg4s" path="res://visuals/AT_Fence.tres" id="3_i7141"]
 [ext_resource type="PackedScene" uid="uid://c3jo64cpug3p" path="res://prefabs/spawner.tscn" id="4_k0juu"]
-[ext_resource type="Texture2D" uid="uid://dswon1rh03nxw" path="res://visuals/AT_Cloud_3.tres" id="4_q5onr"]
-[ext_resource type="Texture2D" uid="uid://bv7ahqq3ar3ql" path="res://visuals/AT_Ground.tres" id="7_7r4gi"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dn1u1"]
 
@@ -22,73 +16,10 @@ script = ExtResource("1_qfnet")
 player = NodePath("../PlayerCharacter")
 run_camera = NodePath("../Camera2D")
 
-[node name="Parallax2D_Cloud" type="Parallax2D" parent="." unique_id=1766842678]
-repeat_size = Vector2(990, 0)
-repeat_times = 4
-
-[node name="Sprite2D_1" type="Sprite2D" parent="Parallax2D_Cloud" unique_id=381432666]
-position = Vector2(1500, 540)
-scale = Vector2(1.66, 1.66)
-texture = ExtResource("2_w7kh3")
-offset = Vector2(-254.465, -140)
-
-[node name="Sprite2D_2" type="Sprite2D" parent="Parallax2D_Cloud" unique_id=1628116835]
-position = Vector2(960, 540)
-scale = Vector2(1.66, 1.66)
-texture = ExtResource("3_e3hyu")
-offset = Vector2(-254.465, -140)
-
-[node name="Sprite2D_3" type="Sprite2D" parent="Parallax2D_Cloud" unique_id=511783633]
-position = Vector2(960, 540)
-scale = Vector2(1.66, 1.66)
-texture = ExtResource("4_q5onr")
-offset = Vector2(-254.465, -140)
-
-[node name="Parallax2D_Skyscrapers" type="Parallax2D" parent="." unique_id=211062778]
-repeat_size = Vector2(990, 0)
-repeat_times = 4
-
-[node name="Sprite2D" type="Sprite2D" parent="Parallax2D_Skyscrapers" unique_id=972846308]
-position = Vector2(960, 540)
-scale = Vector2(1.66, 1.66)
-texture = ExtResource("2_4mrxx")
-offset = Vector2(-254.465, -140)
-
-[node name="Parallax2D_Background2" type="Parallax2D" parent="." unique_id=1450539547]
-repeat_size = Vector2(1050, 0)
-repeat_times = 4
-
-[node name="Sprite2D" type="Sprite2D" parent="Parallax2D_Background2" unique_id=169753470]
-position = Vector2(960, 540)
-scale = Vector2(1.66, 1.66)
-texture = ExtResource("2_qfnet")
-offset = Vector2(-260, 0)
-
-[node name="Parallax2D_Fences2" type="Parallax2D" parent="." unique_id=1825915486]
-repeat_size = Vector2(550, 0)
-repeat_times = 4
-
-[node name="Sprite2D" type="Sprite2D" parent="Parallax2D_Fences2" unique_id=1898044972]
-position = Vector2(960, 650)
-scale = Vector2(1.66, 1.66)
-texture = ExtResource("7_7r4gi")
-centered = false
-offset = Vector2(0, 60)
-
-[node name="Parallax2D_Fences" type="Parallax2D" parent="." unique_id=977474976]
-repeat_size = Vector2(550, 0)
-repeat_times = 4
-
-[node name="Sprite2D" type="Sprite2D" parent="Parallax2D_Fences" unique_id=1320229380]
-position = Vector2(960, 492.775)
-scale = Vector2(1.66, 1.66)
-texture = ExtResource("3_i7141")
-centered = false
-offset = Vector2(0, 60)
+[node name="Decor" parent="." unique_id=1222075053 instance=ExtResource("2_qfnet")]
 
 [node name="PlayerCharacter" parent="." unique_id=776062280 instance=ExtResource("2_rwgxs")]
 position = Vector2(1141, 917)
-anchor_return_ratio = 0.0
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1762616151 node_paths=PackedStringArray("player")]
 anchor_mode = 0
