@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://c3jo64cpug3p"]
 
 [ext_resource type="Script" uid="uid://dwf6mpi6cijtf" path="res://scripts/spawner.gd" id="1_8khw6"]
+[ext_resource type="PackedScene" uid="uid://b2qjqemwamkpt" path="res://prefabs/obstacles/jump_obstacle.tscn" id="2_ohdau"]
+[ext_resource type="PackedScene" uid="uid://b8vlmsaacry4j" path="res://prefabs/obstacles/slide_obstacle.tscn" id="3_jodvj"]
 
 [node name="Spawner" type="Node2D" unique_id=98578749]
 script = ExtResource("1_8khw6")
+obstacles = Array[PackedScene]([ExtResource("2_ohdau"), ExtResource("3_jodvj"), null])
