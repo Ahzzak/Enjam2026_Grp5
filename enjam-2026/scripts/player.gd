@@ -6,8 +6,6 @@ signal run_resumed
 
 enum State { RUN, AIR, SLIDE, DIVE }
 
-const OFFSET_TOLERANCE := 1.0
-
 @export_group("Course")
 @export_range(0, 3000, 10, "suffix:px/s") var run_speed: float = 800.0
 
@@ -20,14 +18,14 @@ const OFFSET_TOLERANCE := 1.0
 @export_group("Slide")
 @export_range(0, 1000, 1, "suffix:px") var slide_boost_distance: float = 250.0
 @export_range(0.05, 2.0, 0.01, "suffix:s") var slide_boost_time: float = 0.4
+## Si S reste enfoncé après le boost : temps pour freiner jusqu'à l'arrêt.
+@export_range(0.1, 5.0, 0.01, "suffix:s") var slide_stop_time: float = 1.5
 ## Fraction de run_speed utilisée pour revenir à l'ancre.
 @export_range(0.0, 1.0, 0.01) var anchor_return_ratio: float = 0.35
 @export_range(0, 6000, 10, "suffix:px/s") var dive_speed: float = 2500.0
 @export_range(0, 1000, 1, "suffix:px") var slide_jump_boost_distance: float = 150.0
 ## Avance max devant l'ancre.
 @export_range(0, 1500, 1, "suffix:px") var max_boost_offset: float = 1100.0
-## Recul max derrière l'ancre avant que le slide s'arrête.
-@export_range(0, 1000, 1, "suffix:px") var max_slide_lag: float = 0.0
 
 @export_group("Tolérances")
 @export_range(0.0, 0.5, 0.01, "suffix:s") var jump_buffer_time: float = 0.12
@@ -83,8 +81,8 @@ var _time_since_jump_press: float = INF
 var _time_since_on_floor: float = INF
 var _anchor_x: float
 var _boost_speed: float = 0.0
+var _brake_time: float = 0.0
 var _has_started: bool = false
-var _slide_exhausted: bool = false
 var _squash_tween: Tween
 
 var _anchor_offset: float:
@@ -150,13 +148,11 @@ func _update_run_input() -> void:
 
 
 func _physics_run(_delta: float) -> void:
-	if not _action_pressed("Slide"):
-		_slide_exhausted = false
 	if _try_jump():
 		return
 	if not is_on_floor():
 		state = State.AIR
-	elif _action_pressed("Slide") and not _slide_exhausted:
+	elif _action_pressed("Slide"):
 		state = State.SLIDE
 
 
@@ -181,14 +177,12 @@ func _physics_air(delta: float) -> void:
 func _physics_slide(_delta: float) -> void:
 	var can_stand_up := _can_stand_up()
 	if can_stand_up and _try_jump():
-		_add_boost(slide_jump_boost_distance)
+		if _boost_speed > 0.0:
+			_add_boost(slide_jump_boost_distance)
 		return
-	var exhausted := _has_started and _boost_speed <= 0.0 \
-		and _anchor_offset <= -max_slide_lag + OFFSET_TOLERANCE
 	if not is_on_floor():
 		state = State.AIR
-	elif (exhausted or not _action_pressed("Slide")) and can_stand_up:
-		_slide_exhausted = exhausted
+	elif not _action_pressed("Slide") and can_stand_up:
 		state = State.RUN
 
 
@@ -229,10 +223,13 @@ func _update_horizontal(delta: float) -> void:
 	if _boost_speed > 0.0:
 		velocity.x = speed + _boost_speed
 		_boost_speed = maxf(_boost_speed - slide_deceleration * delta, 0.0)
+	elif state == State.SLIDE and _has_started and _action_pressed("Slide"):
+		_brake_time += delta
+		var brake_ratio := minf(_brake_time / slide_stop_time, 1.0)
+		velocity.x = speed * (1.0 - brake_ratio * brake_ratio)
 	else:
 		var return_speed := run_speed * speed_scale * anchor_return_ratio
-		var target_offset := -max_slide_lag if state == State.SLIDE and _has_started else 0.0
-		velocity.x = speed + clampf((target_offset - _anchor_offset) / delta, -return_speed, return_speed)
+		velocity.x = speed + clampf(-_anchor_offset / delta, -return_speed, return_speed)
 	_anchor_x += speed * delta
 
 
@@ -272,6 +269,7 @@ func _squash(amount: Vector2) -> void:
 func _enter_state(new_state: State) -> void:
 	match new_state:
 		State.SLIDE:
+			_brake_time = 0.0
 			_squash(slide_squash)
 			_add_boost(slide_boost_distance)
 			_stand_shape.disabled = true
