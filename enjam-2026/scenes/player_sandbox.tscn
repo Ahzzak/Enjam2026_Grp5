@@ -18,9 +18,10 @@ size = Vector2(400, 40)
 script = ExtResource("1_6twx4")
 player = NodePath("PlayerCharacter")
 
-[node name="GameManager" type="Node" parent="." unique_id=1214947442 node_paths=PackedStringArray("player")]
+[node name="GameManager" type="Node" parent="." unique_id=1214947442 node_paths=PackedStringArray("player", "run_camera")]
 script = ExtResource("2_54elx")
 player = NodePath("../PlayerCharacter")
+run_camera = NodePath("../Camera2D")
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=487314904]
 repeat_size = Vector2(1920, 0)
