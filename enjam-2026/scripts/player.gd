@@ -7,19 +7,20 @@ signal run_resumed
 enum State { RUN, AIR, SLIDE, DIVE }
 
 @export_group("Course")
-@export_range(0, 3000, 10, "suffix:px/s") var run_speed: float = 800.0
+@export_range(0, 3000, 10, "suffix:px/s") var run_speed: float = 1500.0
 
 @export_group("Saut")
-@export_range(0, 1000, 1, "suffix:px") var jump_height: float = 440.0
+@export_range(0, 1000, 1, "suffix:px") var jump_height: float = 350.0
 @export_range(0, 1000, 1, "suffix:px") var min_jump_height: float = 110.0
 @export_range(0.05, 2.0, 0.01, "suffix:s") var time_to_apex: float = 0.3
-@export_range(0.05, 2.0, 0.01, "suffix:s") var time_to_land: float = 0.2
+@export_range(0.05, 2.0, 0.01, "suffix:s") var time_to_land: float = 0.1
 
 @export_group("Slide")
 @export_range(0, 1000, 1, "suffix:px") var slide_boost_distance: float = 250.0
 @export_range(0.05, 2.0, 0.01, "suffix:s") var slide_boost_time: float = 0.4
+@export_range(0.0, 3.0, 0.01, "suffix:s") var slide_boost_cooldown: float = 0.8
 ## Si S reste enfoncé après le boost : temps pour freiner jusqu'à l'arrêt.
-@export_range(0.1, 5.0, 0.01, "suffix:s") var slide_stop_time: float = 1.5
+@export_range(0.1, 5.0, 0.01, "suffix:s") var slide_stop_time: float = 0.5
 ## Fraction de run_speed utilisée pour revenir à l'ancre.
 @export_range(0.0, 1.0, 0.01) var anchor_return_ratio: float = 0.35
 @export_range(0, 6000, 10, "suffix:px/s") var dive_speed: float = 2500.0
@@ -81,6 +82,7 @@ var _time_since_jump_press: float = INF
 var _time_since_on_floor: float = INF
 var _anchor_x: float
 var _boost_speed: float = 0.0
+var _boost_cooldown_left: float = 0.0
 var _brake_time: float = 0.0
 var _has_started: bool = false
 var _squash_tween: Tween
@@ -127,6 +129,7 @@ func _physics_process(delta: float) -> void:
 	_update_animation()
 
 	_time_since_jump_press += delta
+	_boost_cooldown_left = maxf(_boost_cooldown_left - delta, 0.0)
 	if is_on_floor():
 		_time_since_on_floor = 0.0
 	else:
@@ -270,7 +273,9 @@ func _enter_state(new_state: State) -> void:
 		State.SLIDE:
 			_brake_time = 0.0
 			_squash(slide_squash)
-			_add_boost(slide_boost_distance)
+			if _boost_cooldown_left <= 0.0:
+				_add_boost(slide_boost_distance)
+			_boost_cooldown_left = slide_boost_cooldown
 			_stand_shape.disabled = true
 			_slide_shape.disabled = false
 		State.DIVE:

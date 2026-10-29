@@ -9,7 +9,7 @@ const PLAYER_HALF_WIDTH := 120.0 ##Du pif un peu
 ## 0 : suit l'ancre, 1 : suit le perso.
 @export_range(0.0, 1.0, 0.01) var follow_player: float = 0.0
 ## Position à l'écran du point suivi, depuis le bord gauche.
-@export_range(0, 1920, 1, "suffix:px") var screen_x: float = 400.0
+@export_range(0, 1920, 1, "suffix:px") var screen_x: float = 600.0
 @export_range(0.0, 2.0, 0.05, "suffix:s") var offscreen_grace: float = 0.5
 
 var offscreen_ratio: float:
