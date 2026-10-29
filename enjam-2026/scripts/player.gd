@@ -97,7 +97,7 @@ var _anchor_offset: float:
 
 
 func _ready() -> void:
-	_anchor_x = position.x + -500
+	_anchor_x = position.x
 
 
 func _unhandled_input(event: InputEvent) -> void:
