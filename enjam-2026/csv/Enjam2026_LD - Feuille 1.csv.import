@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://b8icrr8v2mo66"
+
+[deps]
+
+files=["res://csv/Enjam2026_LD - Feuille 1.4/4.translation", "res://csv/Enjam2026_LD - Feuille 1.1/4.translation", "res://csv/Enjam2026_LD - Feuille 1.2/4.translation", "res://csv/Enjam2026_LD - Feuille 1.3/4.translation", "res://csv/Enjam2026_LD - Feuille 1.4/4.translation", "res://csv/Enjam2026_LD - Feuille 1.1/4.translation", "res://csv/Enjam2026_LD - Feuille 1.2/4.translation", "res://csv/Enjam2026_LD - Feuille 1.3/4.translation", "res://csv/Enjam2026_LD - Feuille 1.4/4.translation", "res://csv/Enjam2026_LD - Feuille 1.1/4.translation", "res://csv/Enjam2026_LD - Feuille 1.2/4.translation", "res://csv/Enjam2026_LD - Feuille 1.3/4.translation", "res://csv/Enjam2026_LD - Feuille 1.4/4.translation", "res://csv/Enjam2026_LD - Feuille 1.1/4.translation", "res://csv/Enjam2026_LD - Feuille 1.2/4.translation", "res://csv/Enjam2026_LD - Feuille 1.3/4.translation"]
+
+source_file="res://csv/Enjam2026_LD - Feuille 1.csv"
+dest_files=["res://csv/Enjam2026_LD - Feuille 1.4/4.translation", "res://csv/Enjam2026_LD - Feuille 1.1/4.translation", "res://csv/Enjam2026_LD - Feuille 1.2/4.translation", "res://csv/Enjam2026_LD - Feuille 1.3/4.translation", "res://csv/Enjam2026_LD - Feuille 1.4/4.translation", "res://csv/Enjam2026_LD - Feuille 1.1/4.translation", "res://csv/Enjam2026_LD - Feuille 1.2/4.translation", "res://csv/Enjam2026_LD - Feuille 1.3/4.translation", "res://csv/Enjam2026_LD - Feuille 1.4/4.translation", "res://csv/Enjam2026_LD - Feuille 1.1/4.translation", "res://csv/Enjam2026_LD - Feuille 1.2/4.translation", "res://csv/Enjam2026_LD - Feuille 1.3/4.translation", "res://csv/Enjam2026_LD - Feuille 1.4/4.translation", "res://csv/Enjam2026_LD - Feuille 1.1/4.translation", "res://csv/Enjam2026_LD - Feuille 1.2/4.translation", "res://csv/Enjam2026_LD - Feuille 1.3/4.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

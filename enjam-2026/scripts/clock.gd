@@ -43,11 +43,21 @@ func start_music():
 func check_beat() -> void:
 	var bar : int = curr_time / 4 / 2
 	var beat : int = curr_time % 32
+	print(beat, " // ", bar)
+
 	if beat == 0:
 		beat = 32
-	if beat == 10: delay_music.emit()
 	if is_msc_started:
 		on_beat.emit(bar, beat)
+
+	if beat % 8 == 1:
+		check_bar(bar)
+	if beat == 8: delay_music.emit()
+
+func check_bar(bar : int):
+	var transitions : Array[int] = [8, 16, 24, 30, 38, 46, 56, 64, 71]
+	if bar in transitions:
+		on_end_part.emit()
 
 func _on_music_finished() -> void:
 	return

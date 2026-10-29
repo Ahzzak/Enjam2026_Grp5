@@ -6,40 +6,35 @@ extends Node2D
 @export var ground_y : float = 1017.0
 @export var obstacles : Array[PackedScene]
 
+var music_part : int = 1
 var spawn_count : int = 0
 var leveldesign : Array[Array]
 
 func _enter_tree() -> void:
 	clock.on_beat.connect(spawn)
+	clock.on_end_part.connect(new_part)
 	load_csv()
 
 func load_csv():
-	var file = FileAccess.open("res://Enjam2026_LD - Feuille 1.csv", FileAccess.READ)
+	var file = FileAccess.open("res://csv/Enjam2026_LD - Feuille 1.csv", FileAccess.READ)
 	while !file.eof_reached():
 		var line := file.get_line()
-		print(line)
 		leveldesign.append(line.split(","))
 	file.close()
-	print(leveldesign.get(1))
 
 func spawn(bar : int, beat : int):
 	_free_passed_obstacles()
-	var type = leveldesign.get(1).get(beat)
-	print(beat)
+	var type = leveldesign.get(music_part).get(beat)
 	var obstacle : Node2D
 	match type:
 		"Jump":
 			obstacle = obstacles.get(0).instantiate()
-			print(type)
 		"Slide":
 			obstacle = obstacles.get(1).instantiate()
-			print(type)
 		"LongJump":
 			obstacle = obstacles.get(0).instantiate()
-			print(type)
 		"x":
 			obstacle = null
-			print(type)
 			return
 
 	add_child(obstacle)
@@ -47,6 +42,9 @@ func spawn(bar : int, beat : int):
 	obstacle.global_position = Vector2(player.anchor_x + spawn_distance, ground_y)
 	spawn_count += 1
 
+
+func new_part():
+	music_part += 1
 
 func _free_passed_obstacles() -> void:
 	for obstacle in get_children():

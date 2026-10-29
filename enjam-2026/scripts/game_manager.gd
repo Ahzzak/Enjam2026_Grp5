@@ -26,7 +26,7 @@ var state: State = State.INTRO:
 	set(value):
 		if value == state:
 			return
-		print(State.keys()[state], " → ", State.keys()[value])
+		#print(State.keys()[state], " → ", State.keys()[value])
 		_exit_state(state)
 		state = value
 		_enter_state(state)
@@ -67,7 +67,8 @@ func _update_age(delta: float) -> void:
 	age_ratio = clampf(game_time / life_duration, 0.0, 1.0)
 	age = lerpf(age_start, age_end, age_ratio)
 	if floori(game_time) != previous_second:
-		print("%d s | %d ans" % [floori(game_time), floori(age)])
+		pass
+		#print("%d s | %d ans" % [floori(game_time), floori(age)])
 
 
 func _is_in_good_window() -> bool:
