@@ -134,7 +134,8 @@ func _physics_process(delta: float) -> void:
 
 
 func _update_run_input() -> void:
-	var pressed := _action_pressed("Run", true)
+	# Lu même contrôles coupés : c'est D qui relance la course.
+	var pressed := Input.is_action_pressed("Run")
 	if pressed == is_running:
 		return
 	is_running = pressed
@@ -208,8 +209,8 @@ func _can_stand_up() -> bool:
 	return not _ceiling_check.is_colliding()
 
 
-func _action_pressed(action: StringName, force_skip_input_control : bool = false) -> bool:
-	return ((force_skip_input_control or controls_enabled) and Input.is_action_pressed(action))
+func _action_pressed(action: StringName) -> bool:
+	return controls_enabled and Input.is_action_pressed(action)
 
 
 func _action_just_pressed(action: StringName) -> bool:
