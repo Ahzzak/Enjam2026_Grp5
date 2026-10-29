@@ -12,7 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://cdwnl0mtnmwx5" path="res://visuals/Character/SP_Run_4.png" id="10_lulei"]
 [ext_resource type="Texture2D" uid="uid://kk57ivyboc6i" path="res://visuals/Character/SP_Slide.png" id="11_22xyk"]
 [ext_resource type="Texture2D" uid="uid://f1q5alhk8psb" path="res://visuals/Character/SP_Run_5.png" id="11_edtk3"]
-[ext_resource type="Texture2D" uid="uid://cei3dqjwr31rj" path="res://visuals/Character/SP_Run_6.png" id="12_q2wkl"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xti4w"]
 radius = 55.0
@@ -74,9 +73,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("11_edtk3")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_q2wkl")
 }],
 "loop": 1,
 "name": &"run",
