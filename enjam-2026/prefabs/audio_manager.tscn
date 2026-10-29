@@ -2,15 +2,22 @@
 
 [ext_resource type="Script" uid="uid://20fr6dbvus56" path="res://scripts/clock.gd" id="1_hju6s"]
 [ext_resource type="AudioStream" uid="uid://8emscnesx0fj" path="res://sounds/click.wav" id="2_dn1u1"]
+[ext_resource type="AudioStream" uid="uid://bqsuqo8yoh5e5" path="res://sounds/Music/Bridge_1.wav" id="3_aymke"]
 [ext_resource type="AudioStream" uid="uid://cnkj0xomut6tn" path="res://sounds/Music/Intro.wav" id="3_dn1u1"]
+[ext_resource type="AudioStream" uid="uid://cl7bk7jv26gju" path="res://sounds/Music/Verse.wav" id="4_r3nto"]
+[ext_resource type="AudioStream" uid="uid://d14asysur11uq" path="res://sounds/Music/Msc.wav" id="6_r3nto"]
 
 [node name="Audio_Manager" type="Node2D" unique_id=338354162 node_paths=PackedStringArray("music")]
 script = ExtResource("1_hju6s")
 music = NodePath("Music")
+playlist = Array[AudioStreamWAV]([ExtResource("3_dn1u1"), ExtResource("3_aymke"), ExtResource("4_r3nto")])
 
 [node name="Click" type="AudioStreamPlayer" parent="." unique_id=1701328855]
 stream = ExtResource("2_dn1u1")
 
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=1655303247]
-stream = ExtResource("3_dn1u1")
+stream = ExtResource("6_r3nto")
 volume_db = -12.0
+playback_type = 1
+
+[connection signal="finished" from="Music" to="." method="_on_music_finished"]
