@@ -24,7 +24,9 @@ func load_csv():
 
 func spawn(bar : int, beat : int):
 	_free_passed_obstacles()
+	if bar > 72: return
 	var type = leveldesign.get(music_part).get(beat)
+	print(leveldesign.get(music_part).get(0))
 	var obstacle : Node2D
 	match type:
 		"Jump":
@@ -39,7 +41,7 @@ func spawn(bar : int, beat : int):
 
 	add_child(obstacle)
 	var spawn_distance := beats_ahead * 60.0 / clock.bpm * player.run_speed
-	obstacle.global_position = Vector2(player.anchor_x + spawn_distance, ground_y)
+	obstacle.global_position = Vector2(player.anchor_x + spawn_distance, (ground_y - 100 ))
 	spawn_count += 1
 
 

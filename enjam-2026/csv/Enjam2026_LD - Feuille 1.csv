@@ -1,12 +1,12 @@
-Part Name,4/4,,1/4,,2/4,,3/4,,4/4,,1/4,,2/4,,3/4,,4/4,,1/4,,2/4,,3/4,,4/4,,1/4,,2/4,,3/4,
+Part Name,1/4,,2/4,,3/4,,4/4,,1/4,,2/4,,3/4,,4/4,,1/4,,2/4,,3/4,,4/4,,1/4,,2/4,,3/4,,4/4,
 Intro,Jump,x,x,x,x,x,x,Slide,x,x,x,x,x,x,x,x,Jump,x,x,x,Jump,x,x,Slide,x,x,x,x,x,x,x,x
-Riff,Jump,x,Slide,Jump,x,Slide,x,Slide,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,LongJump,x,Slide,x,Jump,x,Slide,x,x
-Verse,x,x,x,x,x,Jump,x,x,x,x,x,x,x,Jump,x,x,x,x,x,x,x,Jump,x,x,x,Jump,Slide,x,Jump,Slide,Jump,x
-Chorus,Jump,x,Jump,x,Jump,Slide,x,Jump,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x
-Riff,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x
-Verse,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x
+Riff,Jump,x,Slide,x,Jump,x,x,x,x,Slide,x,Slide,x,x,x,x,Jump,x,Slide,x,Jump,x,x,Jump,x,Slide,x,Jump,x,Jump,x,x
+Verse,x,x,x,x,x,Jump,x,x,x,x,x,x,x,Jump,x,x,x,x,x,x,x,Jump,x,x,Jump,x,Jump,x,Slide,Slide,Slide,Slide
+Chorus,Jump,x,Jump,x,Slide,Slide,x,Jump,x,x,x,x,x,x,x,x,Jump,x,Jump,x,Slide,Slide,x,Jump,x,x,x,x,x,x,x,x
+Riff,Jump,x,Slide,x,Jump,x,x,x,x,Slide,x,Slide,x,x,x,x,Jump,x,Slide,x,Jump,x,x,Jump,x,Slide,x,Jump,x,Jump,x,x
+Verse,x,x,x,x,x,Jump,x,x,x,x,x,x,x,Jump,x,x,x,x,x,x,x,Jump,x,x,Jump,x,Jump,x,Slide,Slide,Slide,Slide
 Bridge,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x
-Chorus,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x
-Riff,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x
+Chorus,Jump,x,Jump,x,Slide,Slide,x,Jump,x,x,x,x,x,x,x,x,Jump,x,Jump,x,Slide,Slide,x,Jump,x,x,x,x,x,x,x,x
+Riff,Jump,x,Slide,x,Jump,x,x,x,x,Slide,x,Slide,x,x,x,x,Jump,x,Slide,x,Jump,x,x,Jump,x,Slide,x,Jump,x,Jump,x,x
 Outro,Jump,x,Jump,x,Jump,x,x,x,Jump,x,Jump,x,Jump,x,x,x,Jump,x,Jump,x,Jump,x,x,x,Jump,x,Jump,x,Jump,x,Slide,x
 End,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x
