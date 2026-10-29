@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://pj5dbnhqno0y"]
 
-[ext_resource type="Texture2D" uid="uid://dx7o70iwqeb2f" path="res://visuals/AT_Cloud_1.tres" id="1_ffoes"]
-[ext_resource type="Texture2D" uid="uid://cflsks6bgm6wq" path="res://visuals/AT_Cloud_2.tres" id="2_3u8p4"]
-[ext_resource type="Texture2D" uid="uid://dswon1rh03nxw" path="res://visuals/AT_Cloud_3.tres" id="3_w12fg"]
-[ext_resource type="Texture2D" uid="uid://5hqet3tvsx0s" path="res://visuals/AT_Skyline.tres" id="4_fr8ag"]
-[ext_resource type="Texture2D" uid="uid://skj6b6l4vv" path="res://visuals/AT_City.tres" id="5_vrhmp"]
-[ext_resource type="Texture2D" uid="uid://cq3gq8exatg4s" path="res://visuals/AT_Fence.tres" id="6_48ipw"]
-[ext_resource type="Texture2D" uid="uid://bv7ahqq3ar3ql" path="res://visuals/AT_Ground.tres" id="7_8gkl7"]
+[ext_resource type="Texture2D" uid="uid://dx7o70iwqeb2f" path="res://visuals/Decor/AT_Cloud_1.tres" id="1_ffoes"]
+[ext_resource type="Texture2D" uid="uid://cflsks6bgm6wq" path="res://visuals/Decor/AT_Cloud_2.tres" id="2_3u8p4"]
+[ext_resource type="Texture2D" uid="uid://dswon1rh03nxw" path="res://visuals/Decor/AT_Cloud_3.tres" id="3_w12fg"]
+[ext_resource type="Texture2D" uid="uid://5hqet3tvsx0s" path="res://visuals/Decor/AT_Skyline.tres" id="4_fr8ag"]
+[ext_resource type="Texture2D" uid="uid://skj6b6l4vv" path="res://visuals/Decor/AT_City.tres" id="5_vrhmp"]
+[ext_resource type="Texture2D" uid="uid://cq3gq8exatg4s" path="res://visuals/Decor/AT_Fence.tres" id="6_48ipw"]
+[ext_resource type="Texture2D" uid="uid://bv7ahqq3ar3ql" path="res://visuals/Decor/AT_Ground.tres" id="7_8gkl7"]
 
 [sub_resource type="Gradient" id="Gradient_7g60a"]
 offsets = PackedFloat32Array(0, 0.75)
@@ -17,6 +17,7 @@ gradient = SubResource("Gradient_7g60a")
 fill_to = Vector2(0, 1)
 
 [node name="Decor" type="Node2D" unique_id=1222075053]
+z_index = -10
 
 [node name="Sky" type="CanvasLayer" parent="." unique_id=473819426]
 layer = -1

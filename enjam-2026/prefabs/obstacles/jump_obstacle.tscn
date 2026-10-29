@@ -1,15 +1,26 @@
 [gd_scene format=3 uid="uid://b2qjqemwamkpt"]
 
-[ext_resource type="Texture2D" uid="uid://c4c54lwwrje0e" path="res://visuals/AT_LowWall.tres" id="1_nnqc7"]
+[ext_resource type="Texture2D" uid="uid://de0mm4v1xeam" path="res://visuals/Decor/AT_LowWall_Back.tres" id="1_nnqc7"]
+[ext_resource type="Texture2D" uid="uid://c4c54lwwrje0e" path="res://visuals/Decor/AT_LowWall_Front.tres" id="2_c05mu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1b57r"]
 size = Vector2(222, 130)
 
 [node name="Jump_Obstacle" type="StaticBody2D" unique_id=749039237]
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1519957440]
-position = Vector2(-44.5, -133)
+[node name="Back" type="Sprite2D" parent="." unique_id=1519957440]
+z_index = -1
+position = Vector2(-97.4, -184.4)
+scale = Vector2(0.8, 0.8)
 texture = ExtResource("1_nnqc7")
+centered = false
+
+[node name="Front" type="Sprite2D" parent="." unique_id=201840604]
+z_index = 1
+position = Vector2(-31, -184.4)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_c05mu")
+centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=24306112]
 position = Vector2(-3, -131)

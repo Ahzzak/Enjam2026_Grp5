@@ -1,0 +1,8 @@
+[gd_resource type="AtlasTexture" format=3 uid="uid://c4c54lwwrje0e"]
+
+[ext_resource type="Texture2D" uid="uid://bcrq7hlcjgw00" path="res://visuals/Decor/T_SpriteSheet.png" id="1_5kn6b"]
+
+[resource]
+atlas = ExtResource("1_5kn6b")
+region = Rect2(1643, 453, 110, 264)
+filter_clip = true

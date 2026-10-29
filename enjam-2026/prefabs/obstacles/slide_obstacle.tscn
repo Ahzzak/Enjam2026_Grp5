@@ -1,15 +1,26 @@
 [gd_scene format=3 uid="uid://b8vlmsaacry4j"]
 
-[ext_resource type="Texture2D" uid="uid://bcddc402fh4su" path="res://visuals/AT_SlideBar.tres" id="1_33j0c"]
+[ext_resource type="Texture2D" uid="uid://c8uh4e5ns0vpf" path="res://visuals/Decor/AT_SlideBar_Back.tres" id="1_33j0c"]
+[ext_resource type="Texture2D" uid="uid://bcddc402fh4su" path="res://visuals/Decor/AT_SlideBar_Front.tres" id="2_p2ca7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1b57r"]
 size = Vector2(144, 249)
 
 [node name="Slide_Obstacle" type="StaticBody2D" unique_id=749039237]
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1519957440]
-position = Vector2(-40, -192)
+[node name="Back" type="Sprite2D" parent="." unique_id=1519957440]
+z_index = -1
+position = Vector2(-202, -321.6)
+scale = Vector2(0.8, 0.8)
 texture = ExtResource("1_33j0c")
+centered = false
+
+[node name="Front" type="Sprite2D" parent="." unique_id=1999476617]
+z_index = 1
+position = Vector2(-78, -321.6)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_p2ca7")
+centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=24306112]
 position = Vector2(-36, -298.5)
