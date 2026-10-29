@@ -11,9 +11,10 @@
 
 [node name="World" type="Node2D" unique_id=533268812]
 
-[node name="GameManager" type="Node" parent="." unique_id=393617811 node_paths=PackedStringArray("player")]
+[node name="GameManager" type="Node" parent="." unique_id=393617811 node_paths=PackedStringArray("player", "run_camera")]
 script = ExtResource("1_qfnet")
 player = NodePath("../PlayerCharacter")
+run_camera = NodePath("../Camera2D")
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=211062778]
 repeat_size = Vector2(1920, 0)

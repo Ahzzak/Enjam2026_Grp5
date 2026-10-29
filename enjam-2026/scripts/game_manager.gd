@@ -4,6 +4,7 @@ extends Node
 enum State { INTRO, RUNNING, RELEASED, GAME_OVER, ENDING, DEATH }
 
 @export var player: Player
+@export var run_camera: RunCamera
 
 @export_group("Lâcher de Deeeeeeeeeeeeeey")
 @export_range(0.05, 1.0, 0.01) var release_slowmo: float = 0.25
@@ -34,8 +35,10 @@ var _can_restart: bool = false
 
 func _ready() -> void:
 	assert(player != null, "GameManager : l'export player n'est pas assigné.")
+	assert(run_camera != null, "RunCamera : l'export camera n'est pas assigné.")
 	player.run_resumed.connect(_on_player_run_resumed)
 	player.run_released.connect(_on_player_run_released)
+	run_camera.player_left_screen.connect(_on_camera_player_left_screen)
 
 
 func _process(_delta: float) -> void:
@@ -61,6 +64,12 @@ func _on_release_finished() -> void:
 		state = State.GAME_OVER
 		_game_over("Tu t’es arrêté trop tôt.")
 
+
+func _on_camera_player_left_screen() -> void:
+	if state == State.RUNNING or state == State.RELEASED:
+		_game_over("Le monde ne t’a pas attendu.")
+
+
 func _game_over(message: String) -> void:
 	_end_message = message
 	state = State.GAME_OVER
@@ -68,9 +77,10 @@ func _game_over(message: String) -> void:
 func _enter_state(new_state: State) -> void:
 	match new_state:
 		State.RUNNING:
+			player.controls_enabled = true
 			_tween_release_factor(1.0, resume_time)
 		State.RELEASED:
-			print("Test")
+			player.controls_enabled = false
 			_tween_release_factor(release_slowmo, release_grace)
 			_release_tween.finished.connect(_on_release_finished)
 		State.GAME_OVER:

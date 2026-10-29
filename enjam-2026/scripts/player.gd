@@ -102,7 +102,7 @@ func _ready() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("Jump") and controls_enabled:
-		_time_since_jump_press = 0.0
+			_time_since_jump_press = 0.0
 
 
 func _physics_process(delta: float) -> void:
@@ -134,9 +134,9 @@ func _physics_process(delta: float) -> void:
 
 
 func _update_run_input() -> void:
-	if not controls_enabled:
-		return
-	var pressed := _action_pressed("Run")
+	##if not controls_enabled:
+		##returncontrols_enabled
+	var pressed := _action_pressed("Run", true)
 	if pressed == is_running:
 		return
 	is_running = pressed
@@ -210,8 +210,8 @@ func _can_stand_up() -> bool:
 	return not _ceiling_check.is_colliding()
 
 
-func _action_pressed(action: StringName) -> bool:
-	return controls_enabled and Input.is_action_pressed(action)
+func _action_pressed(action: StringName, force_skip_input_control : bool = false) -> bool:
+	return ((force_skip_input_control or controls_enabled) and Input.is_action_pressed(action))
 
 
 func _action_just_pressed(action: StringName) -> bool:
