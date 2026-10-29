@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://dkru4epdgxe8t" path="res://scripts/game_manager.gd" id="2_54elx"]
 [ext_resource type="Texture2D" uid="uid://q5hq7v7s00g" path="res://icon.svg" id="3_yla5c"]
 [ext_resource type="Script" uid="uid://cg7r1nj3beiwb" path="res://scripts/run_camera.gd" id="4_6bre8"]
+[ext_resource type="PackedScene" uid="uid://c2r644c7tx82s" path="res://prefabs/pnj/pnj.tscn" id="6_1giyb"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6twx4"]
 
@@ -64,3 +65,13 @@ one_way_collision = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LowPlatform" unique_id=1059849259]
 position = Vector2(1500, 840)
 shape = SubResource("RectangleShape2D_lquo2")
+
+[node name="Pnj" parent="." unique_id=1002276394 instance=ExtResource("6_1giyb")]
+position = Vector2(700, 1020)
+
+[node name="Pnj2" parent="." unique_id=830871999 instance=ExtResource("6_1giyb")]
+position = Vector2(846, 1022)
+happy = false
+
+[node name="Pnj3" parent="." unique_id=257293637 instance=ExtResource("6_1giyb")]
+position = Vector2(764, 1020)

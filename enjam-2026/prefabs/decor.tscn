@@ -81,6 +81,7 @@ texture = ExtResource("5_vrhmp")
 centered = false
 
 [node name="Ground" type="Parallax2D" parent="." unique_id=815608434]
+z_index = 1
 repeat_size = Vector2(704, 0)
 repeat_times = 7
 

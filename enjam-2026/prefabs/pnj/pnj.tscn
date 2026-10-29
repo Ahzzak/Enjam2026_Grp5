@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://c2r644c7tx82s"]
+
+[ext_resource type="Script" uid="uid://bnuuhowq7ymtj" path="res://scripts/pnj.gd" id="1_cy00r"]
+[ext_resource type="Resource" uid="uid://dk7e1c3wwrut0" path="res://prefabs/pnj/looks/look_sign.tres" id="2_mt5uq"]
+
+[node name="Pnj" type="Node2D" unique_id=1002276394]
+script = ExtResource("1_cy00r")
+look = ExtResource("2_mt5uq")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1294103105]

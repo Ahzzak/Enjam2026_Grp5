@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dnmaokc3u35dw"]
+
+[ext_resource type="Script" uid="uid://bmxp4k8fkcf6" path="res://scripts/pnj_spawner.gd" id="1_2ir2f"]
+[ext_resource type="PackedScene" uid="uid://c2r644c7tx82s" path="res://prefabs/pnj/pnj.tscn" id="2_edqcw"]
+[ext_resource type="Script" uid="uid://ddrvshklwhp4s" path="res://scripts/pnj_look.gd" id="2_ttl8v"]
+[ext_resource type="Resource" uid="uid://dk7e1c3wwrut0" path="res://prefabs/pnj/looks/look_sign.tres" id="3_edqcw"]
+[ext_resource type="Resource" uid="uid://6e4l4geddhl5" path="res://prefabs/pnj/looks/look_boy.tres" id="4_25nea"]
+[ext_resource type="Resource" uid="uid://dni7pt23hfe63" path="res://prefabs/pnj/looks/look_old.tres" id="5_r61vm"]
+[ext_resource type="Resource" uid="uid://c0cf0dhv84wnd" path="res://prefabs/pnj/looks/look_girl_long.tres" id="6_hxoad"]
+[ext_resource type="Resource" uid="uid://bb1mfrpvdh0bl" path="res://prefabs/pnj/looks/look_girl_short.tres" id="7_yma8c"]
+
+[node name="PnjSpawner" type="Node2D" unique_id=71066754]
+z_index = -10
+y_sort_enabled = true
+script = ExtResource("1_2ir2f")
+pnj_scene = ExtResource("2_edqcw")
+looks = Array[ExtResource("2_ttl8v")]([ExtResource("3_edqcw"), ExtResource("4_25nea"), ExtResource("5_r61vm"), ExtResource("6_hxoad"), ExtResource("7_yma8c")])

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PnjLook" format=3 uid="uid://dni7pt23hfe63"]
+
+[ext_resource type="Texture2D" uid="uid://ogrtmmxw55rm" path="res://visuals/Decor/PNJ/AT_PNJ4_Happy.tres" id="1_1upqq"]
+[ext_resource type="Script" uid="uid://ddrvshklwhp4s" path="res://scripts/pnj_look.gd" id="1_og0s7"]
+[ext_resource type="Texture2D" uid="uid://cte011wclux6m" path="res://visuals/Decor/PNJ/AT_PNJ4_Sad.tres" id="2_mpofl"]
+
+[resource]
+script = ExtResource("1_og0s7")
+happy = ExtResource("1_1upqq")
+sad = ExtResource("2_mpofl")
+metadata/_custom_type_script = "uid://ddrvshklwhp4s"

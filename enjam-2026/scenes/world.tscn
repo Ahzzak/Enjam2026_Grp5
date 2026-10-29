@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dkru4epdgxe8t" path="res://scripts/game_manager.gd" id="1_qfnet"]
 [ext_resource type="PackedScene" uid="uid://pj5dbnhqno0y" path="res://prefabs/decor.tscn" id="2_qfnet"]
 [ext_resource type="PackedScene" uid="uid://c0o3frsrsxts4" path="res://prefabs/player.tscn" id="2_rwgxs"]
+[ext_resource type="PackedScene" uid="uid://dnmaokc3u35dw" path="res://prefabs/pnj/pnj_spawner.tscn" id="3_4mrxx"]
 [ext_resource type="PackedScene" uid="uid://dcoiqsaod757h" path="res://prefabs/audio_manager.tscn" id="3_4wyf3"]
 [ext_resource type="Script" uid="uid://cg7r1nj3beiwb" path="res://scripts/run_camera.gd" id="3_71j4m"]
 [ext_resource type="PackedScene" uid="uid://c3jo64cpug3p" path="res://prefabs/spawner.tscn" id="4_k0juu"]
@@ -17,6 +18,10 @@ player = NodePath("../PlayerCharacter")
 run_camera = NodePath("../Camera2D")
 
 [node name="Decor" parent="." unique_id=1222075053 instance=ExtResource("2_qfnet")]
+
+[node name="PnjSpawner" parent="." unique_id=71066754 node_paths=PackedStringArray("game_manager", "camera") instance=ExtResource("3_4mrxx")]
+game_manager = NodePath("../GameManager")
+camera = NodePath("../Camera2D")
 
 [node name="PlayerCharacter" parent="." unique_id=776062280 instance=ExtResource("2_rwgxs")]
 position = Vector2(1141, 917)
