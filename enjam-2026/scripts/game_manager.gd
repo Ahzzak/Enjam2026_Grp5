@@ -22,11 +22,16 @@ enum State { INTRO, RUNNING, RELEASED, GAME_OVER, ENDING, DEATH }
 @export var age_threshold_min: float = 62.0
 @export var age_threshold_max: float = 72.0
 
+@export_group("Debug")
+## Affiche les changements d'état et l'âge dans la console.
+@export var debug_print: bool = false
+
 var state: State = State.INTRO:
 	set(value):
 		if value == state:
 			return
-		#print(State.keys()[state], " → ", State.keys()[value])
+		if debug_print:
+			print(State.keys()[state], " → ", State.keys()[value])
 		_exit_state(state)
 		state = value
 		_enter_state(state)
@@ -48,7 +53,7 @@ var age_ratio: float = 0.0
 
 func _ready() -> void:
 	assert(player != null, "GameManager : l'export player n'est pas assigné.")
-	assert(run_camera != null, "RunCamera : l'export camera n'est pas assigné.")
+	assert(run_camera != null, "GameManager : l'export run_camera n'est pas assigné.")
 	player.run_resumed.connect(_on_player_run_resumed)
 	player.run_released.connect(_on_player_run_released)
 	run_camera.player_left_screen.connect(_on_camera_player_left_screen)
@@ -66,9 +71,8 @@ func _update_age(delta: float) -> void:
 	game_time += delta
 	age_ratio = clampf(game_time / life_duration, 0.0, 1.0)
 	age = lerpf(age_start, age_end, age_ratio)
-	if floori(game_time) != previous_second:
-		pass
-		#print("%d s | %d ans" % [floori(game_time), floori(age)])
+	if debug_print and floori(game_time) != previous_second:
+		print("%d s | %d ans" % [floori(game_time), floori(age)])
 
 
 func _is_in_good_window() -> bool:
