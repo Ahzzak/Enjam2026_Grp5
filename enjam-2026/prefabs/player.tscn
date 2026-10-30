@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://c0o3frsrsxts4"]
 
 [ext_resource type="Script" uid="uid://c2dqnulv6s8vl" path="res://scripts/player.gd" id="1_4dohe"]
-[ext_resource type="Texture2D" uid="uid://d0r3vc2yxw26" path="res://visuals/Character/young/SP_Dive.png" id="2_8rb0w"]
 [ext_resource type="Texture2D" uid="uid://beh01x34vu50r" path="res://visuals/Character/young/SP_Fall.png" id="3_sd3sa"]
 [ext_resource type="Texture2D" uid="uid://c54r0tmprgsg2" path="res://visuals/Character/young/SP_Idle_1.png" id="4_m2qjg"]
 [ext_resource type="Texture2D" uid="uid://dgeof7d7kqcbj" path="res://visuals/Character/young/SP_Run_0.png" id="6_22xyk"]
@@ -37,7 +36,7 @@ height = 220.0
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_8rb0w")
+"texture": ExtResource("3_sd3sa")
 }],
 "loop": 1,
 "name": &"dive",
@@ -106,7 +105,7 @@ animations = [{
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_8rb0w")
+"texture": ExtResource("14_cv2ms")
 }],
 "loop": 1,
 "name": &"dive",
@@ -191,15 +190,15 @@ disabled = true
 
 [node name="Sprite_YoungRunner" type="AnimatedSprite2D" parent="Visual" unique_id=226771862]
 sprite_frames = SubResource("SpriteFrames_stj53")
-animation = &"run"
+animation = &"dive"
 autoplay = "idle"
-frame_progress = 0.29554737
+frame_progress = 0.19262107
 offset = Vector2(0, -128)
 
 [node name="SpriteSprite_OldRunner" type="AnimatedSprite2D" parent="Visual" unique_id=1468214603]
 visible = false
 sprite_frames = SubResource("SpriteFrames_sh7kr")
-animation = &"run"
+animation = &"dive"
 autoplay = "idle"
 offset = Vector2(0, -128)
 
