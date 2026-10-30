@@ -91,7 +91,7 @@ animations = [{
 }],
 "loop": 1,
 "name": &"run",
-"speed": 15.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -160,7 +160,7 @@ animations = [{
 }],
 "loop": 1,
 "name": &"run",
-"speed": 15.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -193,15 +193,14 @@ disabled = true
 sprite_frames = SubResource("SpriteFrames_stj53")
 animation = &"run"
 autoplay = "idle"
-frame_progress = 0.9348268
+frame_progress = 0.42443132
 offset = Vector2(0, -128)
 
 [node name="SpriteSprite_OldRunner" type="AnimatedSprite2D" parent="Visual" unique_id=1468214603]
 visible = false
 sprite_frames = SubResource("SpriteFrames_sh7kr")
-animation = &"slide"
+animation = &"run"
 autoplay = "idle"
-frame_progress = 0.9587522
 offset = Vector2(0, -128)
 
 [node name="CeilingCheck" type="ShapeCast2D" parent="." unique_id=280805867]

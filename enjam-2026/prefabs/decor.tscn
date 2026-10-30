@@ -33,7 +33,7 @@ texture = SubResource("GradientTexture2D_lixwb")
 expand_mode = 1
 
 [node name="Clouds" type="Parallax2D" parent="." unique_id=529777360]
-scroll_scale = Vector2(0.05, 1)
+scroll_scale = Vector2(0.025, 0.5)
 repeat_size = Vector2(2600, 0)
 autoscroll = Vector2(-20, 0)
 
@@ -59,7 +59,7 @@ texture = ExtResource("3_w12fg")
 centered = false
 
 [node name="Skyline" type="Parallax2D" parent="." unique_id=464947537]
-scroll_scale = Vector2(0.2, 1)
+scroll_scale = Vector2(0.05, 0.25)
 repeat_size = Vector2(777.4, 0)
 repeat_times = 7
 
@@ -71,7 +71,7 @@ texture = ExtResource("4_fr8ag")
 centered = false
 
 [node name="City" type="Parallax2D" parent="." unique_id=888156620]
-scroll_scale = Vector2(0.5, 1)
+scroll_scale = Vector2(0.1, 0.2)
 repeat_size = Vector2(640, 0)
 repeat_times = 7
 
@@ -83,15 +83,10 @@ centered = false
 [node name="Ground" type="Parallax2D" parent="." unique_id=815608434]
 z_index = 1
 repeat_size = Vector2(704, 0)
-repeat_times = 7
-
-[node name="FenceA" type="Sprite2D" parent="Ground" unique_id=612823119]
-position = Vector2(0, 710)
-scale = Vector2(1.1, 1.1)
-texture = ExtResource("6_48ipw")
-centered = false
+repeat_times = 6
 
 [node name="FenceB" type="Sprite2D" parent="Ground" unique_id=1403514327]
+visible = false
 position = Vector2(352, 710)
 scale = Vector2(1.1, 1.1)
 texture = ExtResource("6_48ipw")
@@ -109,3 +104,14 @@ offset_right = 704.0
 offset_bottom = 1675.0
 mouse_filter = 2
 color = Color(0.39607844, 0.17254902, 0.007843138, 1)
+
+[node name="Ground2" type="Parallax2D" parent="." unique_id=29731889]
+z_index = 1
+repeat_size = Vector2(2000, 0)
+repeat_times = 3
+
+[node name="FenceA" type="Sprite2D" parent="Ground2" unique_id=1452873966]
+position = Vector2(0.125, 710)
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("6_48ipw")
+centered = false
