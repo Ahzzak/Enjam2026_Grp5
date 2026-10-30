@@ -9,8 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://bv7ahqq3ar3ql" path="res://visuals/Decor/AT_Ground.tres" id="7_8gkl7"]
 
 [sub_resource type="Gradient" id="Gradient_7g60a"]
-offsets = PackedFloat32Array(0, 0.75)
-colors = PackedColorArray(0.96862745, 0.7137255, 0.2901961, 1, 0.99215686, 0.8901961, 0.627451, 1)
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.96862745, 0.7137255, 0.2901961, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_lixwb"]
 gradient = SubResource("Gradient_7g60a")

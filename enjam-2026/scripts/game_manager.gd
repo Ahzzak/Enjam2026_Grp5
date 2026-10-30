@@ -1,7 +1,10 @@
 class_name GameManager
 extends Node
 
+signal game_ended(ending: Ending, age: float)
+
 enum State { INTRO, RUNNING, RELEASED, GAME_OVER, ENDING, DEATH }
+enum Ending { OUT_OF_SCREEN, TOO_EARLY, GOOD, TOO_LATE }
 
 @export var player: Player
 @export var run_camera: RunCamera
@@ -42,8 +45,7 @@ var end_factor: float = 1.0
 
 var _release_tween: Tween
 
-var _end_message: String = ""
-var _ending: int = 0
+var _ending: Ending = Ending.OUT_OF_SCREEN
 var _can_restart: bool = false
 
 ## Temps de jeu écoulé depuis le début de la course, en secondes.
@@ -75,9 +77,9 @@ func _update_age(delta: float) -> void:
 	if debug_print and floori(game_time) != previous_second:
 		print("%d s | %d ans" % [floori(game_time), floori(age)])
 	if state == State.RELEASED and _is_in_good_window():
-		_end_game(2)
+		_end_game(Ending.GOOD)
 	elif state == State.RUNNING and age_ratio >= 1.0:
-		_end_game(3)
+		_end_game(Ending.TOO_LATE)
 
 
 func _is_in_good_window() -> bool:
@@ -103,27 +105,22 @@ func _on_player_run_released() -> void:
 	if age < age_threshold_min:
 		state = State.RELEASED
 	elif _is_in_good_window():
-		_end_game(2)
+		_end_game(Ending.GOOD)
 	else:
-		_end_game(3)
+		_end_game(Ending.TOO_LATE)
 
 
 func _on_release_finished() -> void:
 	if state == State.RELEASED:
-		_end_game(1)
+		_end_game(Ending.TOO_EARLY)
 
 
 func _on_camera_player_left_screen() -> void:
 	if state == State.RUNNING or state == State.RELEASED:
-		_game_over("Le monde ne t’a pas attendu.")
+		state = State.GAME_OVER
 
 
-func _game_over(message: String) -> void:
-	_end_message = message
-	state = State.GAME_OVER
-
-
-func _end_game(ending: int) -> void:
+func _end_game(ending: Ending) -> void:
 	_ending = ending
 	state = State.ENDING
 
@@ -140,13 +137,14 @@ func _enter_state(new_state: State) -> void:
 		State.GAME_OVER:
 			player.controls_enabled = false
 			create_tween().set_ignore_time_scale(true).tween_property(self, "end_factor", 0.01, 0.5)
-			_show_end([_end_message], restart_delay)
+			_show_end(Ending.OUT_OF_SCREEN)
 		State.ENDING:
 			player.controls_enabled = false
 			_tween_release_factor(1.0, 1.2)
 			create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT) \
 				.tween_property(player, "speed_scale", 0.0, 2.0)
-			print("Fin %d/3" % _ending)
+			_show_end(_ending)
+
 
 func _exit_state(_old_state: State) -> void:
 	pass
@@ -160,11 +158,11 @@ func _tween_release_factor(target: float, duration: float) -> void:
 	_release_tween.tween_property(self, "release_factor", target, duration)
 
 
-func _show_end(lines: Array, delay: float) -> void:
-	for line in lines:
-		print(line)
-	await get_tree().create_timer(delay, true, false, true).timeout
-	print("Appuie sur D pour recommencer")
+func _show_end(ending: Ending) -> void:
+	game_ended.emit(ending, age)
+	if debug_print:
+		print("Fin : %s à %d ans" % [Ending.keys()[ending], floori(age)])
+	await get_tree().create_timer(restart_delay, true, false, true).timeout
 	_can_restart = true
 
 
