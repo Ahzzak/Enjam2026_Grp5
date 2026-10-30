@@ -15,3 +15,4 @@ y_sort_enabled = true
 script = ExtResource("1_2ir2f")
 pnj_scene = ExtResource("2_edqcw")
 looks = Array[ExtResource("2_ttl8v")]([ExtResource("3_edqcw"), ExtResource("4_25nea"), ExtResource("5_r61vm"), ExtResource("6_hxoad"), ExtResource("7_yma8c")])
+feet_y = 805.0

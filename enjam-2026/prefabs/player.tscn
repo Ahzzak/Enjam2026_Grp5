@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://d0r3vc2yxw26" path="res://visuals/Character/SP_Dive.png" id="2_8rb0w"]
 [ext_resource type="Texture2D" uid="uid://beh01x34vu50r" path="res://visuals/Character/SP_Fall.png" id="3_sd3sa"]
 [ext_resource type="Texture2D" uid="uid://c54r0tmprgsg2" path="res://visuals/Character/SP_Idle_1.png" id="4_m2qjg"]
-[ext_resource type="Texture2D" uid="uid://djaggm3vjnurp" path="res://visuals/Character/SP_Idle_2.png" id="5_llb5v"]
 [ext_resource type="Texture2D" uid="uid://cdijuqlqaqgph" path="res://visuals/Character/SP_Jump.png" id="6_x0bak"]
 [ext_resource type="Texture2D" uid="uid://v5vlgde7cx5b" path="res://visuals/Character/SP_Run_1.png" id="7_m2qjg"]
 [ext_resource type="Texture2D" uid="uid://b10f8kerkdvk1" path="res://visuals/Character/SP_Run_2.png" id="8_llb5v"]
@@ -42,9 +41,6 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("4_m2qjg")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_llb5v")
 }],
 "loop": 1,
 "name": &"idle",
@@ -107,7 +103,7 @@ disabled = true
 
 [node name="Sprite" type="AnimatedSprite2D" parent="Visual" unique_id=226771862]
 sprite_frames = SubResource("SpriteFrames_stj53")
-animation = &"run"
+animation = &"idle"
 autoplay = "idle"
 offset = Vector2(0, -128)
 

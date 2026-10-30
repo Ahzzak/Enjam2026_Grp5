@@ -76,7 +76,7 @@ repeat_size = Vector2(640, 0)
 repeat_times = 7
 
 [node name="Sprite2D" type="Sprite2D" parent="City" unique_id=1670484800]
-position = Vector2(0, 360)
+position = Vector2(0, 240)
 texture = ExtResource("5_vrhmp")
 centered = false
 

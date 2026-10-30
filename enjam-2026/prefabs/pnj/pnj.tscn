@@ -8,3 +8,4 @@ script = ExtResource("1_cy00r")
 look = ExtResource("2_mt5uq")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=1294103105]
+scale = Vector2(1.1, 1.1)
