@@ -39,6 +39,7 @@ func _process(delta: float) -> void:
 	if !is_instance_valid(music): return
 	music.pitch_scale = maxf(Engine.time_scale, 0.01)
 
+	if !player._has_started : return
 	match player.state:
 		player.State.RUN:
 			slide.volume_db = -80
@@ -54,6 +55,7 @@ func _process(delta: float) -> void:
 	slide.volume_db += clampf(player.velocity.x, -40, 0)
 
 func jump_sound():
+	if !player._has_started: return
 	$Jump.play()
 
 func start_music():
