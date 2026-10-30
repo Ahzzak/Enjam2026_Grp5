@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dcoiqsaod757h" path="res://prefabs/audio_manager.tscn" id="3_4wyf3"]
 [ext_resource type="Script" uid="uid://cg7r1nj3beiwb" path="res://scripts/run_camera.gd" id="3_71j4m"]
 [ext_resource type="PackedScene" uid="uid://c3jo64cpug3p" path="res://prefabs/spawner.tscn" id="4_k0juu"]
+[ext_resource type="PackedScene" uid="uid://bd6mxxr3ecwno" path="res://prefabs/menu.tscn" id="8_4mrxx"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dn1u1"]
 
@@ -37,9 +38,13 @@ player = NodePath("../PlayerCharacter")
 position = Vector2(0, 917)
 shape = SubResource("WorldBoundaryShape2D_dn1u1")
 
-[node name="Audio_Manager" parent="." unique_id=338354162 node_paths=PackedStringArray("player") instance=ExtResource("3_4wyf3")]
+[node name="Audio_Manager" parent="." unique_id=338354162 node_paths=PackedStringArray("game_manager", "player") instance=ExtResource("3_4wyf3")]
+game_manager = NodePath("../GameManager")
 player = NodePath("../PlayerCharacter")
 
 [node name="Spawner" parent="." unique_id=696965722 node_paths=PackedStringArray("clock", "player") instance=ExtResource("4_k0juu")]
 clock = NodePath("../Audio_Manager")
 player = NodePath("../PlayerCharacter")
+
+[node name="Menu" parent="." unique_id=1513520472 node_paths=PackedStringArray("game_manager") instance=ExtResource("8_4mrxx")]
+game_manager = NodePath("../GameManager")
