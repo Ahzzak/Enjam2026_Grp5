@@ -16,6 +16,7 @@ enum Ending { OUT_OF_SCREEN, TOO_EARLY, GOOD, TOO_LATE }
 
 @export_group("Fin de Partie")
 @export_range(0.0, 5, 0.1, "suffix:s") var restart_delay: float = 1.0
+@export var restart_on_run: bool = true
 
 @export_group("Vie")
 @export_range(10.0, 600.0, 0.1, "suffix:s") var life_duration: float = 130.0
@@ -93,7 +94,7 @@ func _is_in_good_window() -> bool:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if _can_restart and event.is_action_pressed("Run"):
-		_restart()
+		restart()
 		return
 	var key := event as InputEventKey
 	if OS.is_debug_build() and key and key.pressed and not key.echo and key.keycode == KEY_N:
@@ -167,11 +168,13 @@ func _show_end(ending: Ending) -> void:
 	game_ended.emit(ending, age)
 	if debug_print:
 		print("Fin : %s à %d ans" % [Ending.keys()[ending], floori(age)])
+	if not restart_on_run:
+		return
 	await get_tree().create_timer(restart_delay, true, false, true).timeout
 	_can_restart = true
 
 
-func _restart() -> void:
+func restart() -> void:
 	_can_restart = false
 	Engine.time_scale = 1.0
 	get_tree().reload_current_scene()

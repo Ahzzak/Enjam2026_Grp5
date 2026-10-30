@@ -17,12 +17,14 @@
 script = ExtResource("1_qfnet")
 player = NodePath("../PlayerCharacter")
 run_camera = NodePath("../Camera2D")
+restart_on_run = false
 
 [node name="Decor" parent="." unique_id=1222075053 instance=ExtResource("2_qfnet")]
 
 [node name="PnjSpawner" parent="." unique_id=71066754 node_paths=PackedStringArray("game_manager", "camera") instance=ExtResource("3_4mrxx")]
 game_manager = NodePath("../GameManager")
 camera = NodePath("../Camera2D")
+feet_y = 816.0
 
 [node name="PlayerCharacter" parent="." unique_id=776062280 instance=ExtResource("2_rwgxs")]
 position = Vector2(1141, 917)

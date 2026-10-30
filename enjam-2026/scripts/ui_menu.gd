@@ -17,8 +17,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Pause"):
 		toggle_menu()
-	if Input.is_action_just_pressed("Run"):
-		hide()
+	if Input.is_action_just_pressed("Run") and is_menu and not ending_page.visible:
+		toggle_menu()
 
 
 func _on_quit_button_pressed() -> void:
@@ -50,6 +50,7 @@ func _on_return_pressed() -> void:
 	main_page.show()
 
 func game_ended(ending : GameManager.Ending, age : float):
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	show()
 	ending_page.show()
 	for child in ending_page.get_children():
@@ -63,7 +64,7 @@ func game_ended(ending : GameManager.Ending, age : float):
 			active_ending = $Endings/Good_Ending
 		game_manager.Ending.TOO_LATE:
 			active_ending = $Endings/Late_Ending
-	var tween : Tween = create_tween()
+	var tween : Tween = create_tween().set_ignore_time_scale(true)
 	active_ending.show()
 	main_page.hide()
 	tween.tween_property(active_ending, "modulate", Color(0.0, 0.0, 0.0, 0.0), 0)
@@ -74,9 +75,8 @@ func game_ended(ending : GameManager.Ending, age : float):
 
 
 func _on_ending_button_pressed() -> void:
-	var tween : Tween = create_tween()
+	var tween : Tween = create_tween().set_ignore_time_scale(true)
 	tween.tween_property($Endings/Ending_Button, "modulate", Color.BLACK, 0.1)
 	tween.tween_property(active_ending, "modulate", Color.BLACK, 2)
 	await tween.finished
-	game_manager._can_restart = true
-	game_manager._restart()
+	game_manager.restart()

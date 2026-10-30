@@ -193,7 +193,7 @@ disabled = true
 sprite_frames = SubResource("SpriteFrames_stj53")
 animation = &"run"
 autoplay = "idle"
-frame_progress = 0.42443132
+frame_progress = 0.29554737
 offset = Vector2(0, -128)
 
 [node name="SpriteSprite_OldRunner" type="AnimatedSprite2D" parent="Visual" unique_id=1468214603]
