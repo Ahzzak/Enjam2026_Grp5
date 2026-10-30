@@ -177,6 +177,7 @@ size = Vector2(100, 150)
 [node name="PlayerCharacter" type="CharacterBody2D" unique_id=776062280]
 script = ExtResource("1_4dohe")
 run_speed = 200.0
+jump_height = 230.0
 
 [node name="StandShape" type="CollisionShape2D" parent="." unique_id=1606157982]
 position = Vector2(0, -130)
