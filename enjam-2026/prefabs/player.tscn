@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://bklg6naoees42" path="res://visuals/Character/old/SP_Old_Run_6.png" id="19_ay5dx"]
 [ext_resource type="Texture2D" uid="uid://bfthjgn7hbh1p" path="res://visuals/Character/old/SP_Old_Run_7.png" id="20_5loxu"]
 [ext_resource type="Texture2D" uid="uid://buxbh42ninyv7" path="res://visuals/Character/old/SP_Old_Slide.png" id="24_ay5dx"]
+[ext_resource type="Texture2D" uid="uid://wokr1temiy5b" path="res://visuals/Character/Keanu_Run2.png" id="24_cv2ms"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xti4w"]
 radius = 55.0
@@ -175,6 +176,7 @@ size = Vector2(100, 150)
 
 [node name="PlayerCharacter" type="CharacterBody2D" unique_id=776062280]
 script = ExtResource("1_4dohe")
+run_speed = 200.0
 
 [node name="StandShape" type="CollisionShape2D" parent="." unique_id=1606157982]
 position = Vector2(0, -130)
@@ -190,9 +192,8 @@ disabled = true
 
 [node name="Sprite_YoungRunner" type="AnimatedSprite2D" parent="Visual" unique_id=226771862]
 sprite_frames = SubResource("SpriteFrames_stj53")
-animation = &"dive"
+animation = &"jump"
 autoplay = "idle"
-frame_progress = 0.70557386
 offset = Vector2(0, -128)
 
 [node name="SpriteSprite_OldRunner" type="AnimatedSprite2D" parent="Visual" unique_id=1468214603]
@@ -206,3 +207,37 @@ offset = Vector2(0, -128)
 position = Vector2(0, -185)
 shape = SubResource("RectangleShape2D_stj53")
 target_position = Vector2(0, 0)
+
+[node name="Keanus" type="Node2D" parent="." unique_id=1894601938]
+visible = false
+
+[node name="Keanu_fall" type="Sprite2D" parent="Keanus" unique_id=43773808]
+visible = false
+position = Vector2(-19.999998, -205)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("24_cv2ms")
+
+[node name="Keanu_slide" type="Sprite2D" parent="Keanus" unique_id=1944589158]
+visible = false
+position = Vector2(-84, -125.99999)
+rotation = -0.41965818
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("24_cv2ms")
+
+[node name="Keanu_idle" type="Sprite2D" parent="Keanus" unique_id=1756815568]
+position = Vector2(6, -195)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("24_cv2ms")
+
+[node name="Keanu_run" type="Sprite2D" parent="Keanus" unique_id=843540289]
+visible = false
+position = Vector2(31.999996, -187)
+rotation = 0.17453292
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("24_cv2ms")
+
+[node name="Keanu_jump" type="Sprite2D" parent="Keanus" unique_id=1749832524]
+visible = false
+position = Vector2(9, -195)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("24_cv2ms")

@@ -4,7 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://c4c54lwwrje0e" path="res://visuals/Decor/AT_LowWall_Front.tres" id="2_c05mu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1b57r"]
-size = Vector2(222, 130)
+size = Vector2(222, 72.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xti4w"]
 
 [node name="Jump_Obstacle" type="StaticBody2D" unique_id=749039237]
 
@@ -23,6 +25,12 @@ texture = ExtResource("2_c05mu")
 centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=24306112]
-position = Vector2(-3, -131)
+position = Vector2(-3, -73.5)
 scale = Vector2(0.5, 2)
 shape = SubResource("RectangleShape2D_1b57r")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=969202110]
+position = Vector2(-3, -146)
+rotation = 0.7853982
+scale = Vector2(4, 4)
+shape = SubResource("RectangleShape2D_xti4w")

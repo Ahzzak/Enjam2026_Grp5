@@ -4,7 +4,7 @@ extends CharacterBody2D
 signal run_released
 signal run_resumed
 
-enum State { RUN, AIR, SLIDE, DIVE }
+enum State { RUN, AIR, SLIDE, DIVE, IDLE }
 
 @export_group("Course")
 @export_range(0, 3000, 10, "suffix:px/s") var run_speed: float = 1500.0
@@ -91,6 +91,9 @@ var _anchor_offset: float:
 	get:
 		return position.x - _anchor_x
 
+var _keanu : bool = false
+
+@onready var curr_keanu : Sprite2D
 @onready var _visual: Node2D = $Visual
 @onready var _stand_shape: CollisionShape2D = $StandShape
 @onready var _slide_shape: CollisionShape2D = $SlideShape
@@ -137,6 +140,23 @@ func _physics_process(delta: float) -> void:
 		_time_since_on_floor = 0.0
 	else:
 		_time_since_on_floor += delta
+
+	if Input.is_action_just_pressed("Keanu_Mode"):
+		_keanu = !_keanu
+		if _keanu:
+			$Keanus.show()
+		else:
+			$Keanus.hide()
+	if _keanu:
+		if !self.is_running and !_has_started:
+			curr_keanu = $Keanus/Keanu_idle
+			for sprite in $Keanus.get_children():
+				sprite.hide()
+			$Keanus/Keanu_idle.show()
+		else:
+			for sprite in $Keanus.get_children():
+				sprite.hide()
+			curr_keanu.show()
 
 
 func _update_run_input() -> void:
@@ -251,12 +271,16 @@ func _update_animation() -> void:
 	match state:
 		State.RUN:
 			_sprite.play("run" if _has_started and speed_scale > 0.0 else "idle")
+			curr_keanu = $Keanus/Keanu_run
 		State.AIR:
 			_sprite.play("jump" if velocity.y < 0.0 else "fall")
+			curr_keanu = $Keanus/Keanu_jump
 		State.SLIDE:
 			_sprite.play("slide")
+			curr_keanu = $Keanus/Keanu_slide
 		State.DIVE:
 			_sprite.play("dive")
+			curr_keanu = $Keanus/Keanu_fall
 
 
 func _handle_landing() -> void:
