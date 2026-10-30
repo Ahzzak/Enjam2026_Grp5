@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b10f8kerkdvk1"
-path="res://.godot/imported/SP_Run_2.png-3d1afd509eef01cb7be9b493114b4325.ctex"
+uid="uid://djaggm3vjnurp"
+path="res://.godot/imported/SP_Idle_2.png-127a33581552cfad2675cc3c560e5e67.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://visuals/Character/SP_Run_2.png"
-dest_files=["res://.godot/imported/SP_Run_2.png-3d1afd509eef01cb7be9b493114b4325.ctex"]
+source_file="res://visuals/Character/young/SP_Idle_2.png"
+dest_files=["res://.godot/imported/SP_Idle_2.png-127a33581552cfad2675cc3c560e5e67.ctex"]
 
 [params]
 

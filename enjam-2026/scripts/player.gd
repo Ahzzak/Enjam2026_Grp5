@@ -95,7 +95,10 @@ var _anchor_offset: float:
 @onready var _stand_shape: CollisionShape2D = $StandShape
 @onready var _slide_shape: CollisionShape2D = $SlideShape
 @onready var _ceiling_check: ShapeCast2D = $CeilingCheck
-@onready var _sprite: AnimatedSprite2D = $Visual/Sprite
+@onready var _young_sprite: AnimatedSprite2D = $Visual/Sprite_YoungRunner
+@onready var _old_sprite: AnimatedSprite2D = $Visual/SpriteSprite_OldRunner
+## Le sprite affiché et animé : jeune ou vieux.
+@onready var _sprite: AnimatedSprite2D = _young_sprite
 
 
 func _ready() -> void:
@@ -287,3 +290,10 @@ func _exit_state(old_state: State) -> void:
 		State.SLIDE:
 			_stand_shape.disabled = false
 			_slide_shape.disabled = true
+
+
+func swap_sprite(old: bool) -> void:
+	_young_sprite.visible = not old
+	_old_sprite.visible = old
+	_sprite = _old_sprite if old else _young_sprite
+	_update_animation()

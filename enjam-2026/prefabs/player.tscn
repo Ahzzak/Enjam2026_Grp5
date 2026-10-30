@@ -1,16 +1,29 @@
 [gd_scene format=3 uid="uid://c0o3frsrsxts4"]
 
 [ext_resource type="Script" uid="uid://c2dqnulv6s8vl" path="res://scripts/player.gd" id="1_4dohe"]
-[ext_resource type="Texture2D" uid="uid://d0r3vc2yxw26" path="res://visuals/Character/SP_Dive.png" id="2_8rb0w"]
-[ext_resource type="Texture2D" uid="uid://beh01x34vu50r" path="res://visuals/Character/SP_Fall.png" id="3_sd3sa"]
-[ext_resource type="Texture2D" uid="uid://c54r0tmprgsg2" path="res://visuals/Character/SP_Idle_1.png" id="4_m2qjg"]
-[ext_resource type="Texture2D" uid="uid://cdijuqlqaqgph" path="res://visuals/Character/SP_Jump.png" id="6_x0bak"]
-[ext_resource type="Texture2D" uid="uid://v5vlgde7cx5b" path="res://visuals/Character/SP_Run_1.png" id="7_m2qjg"]
-[ext_resource type="Texture2D" uid="uid://b10f8kerkdvk1" path="res://visuals/Character/SP_Run_2.png" id="8_llb5v"]
-[ext_resource type="Texture2D" uid="uid://c4xcfsxlkgu1u" path="res://visuals/Character/SP_Run_3.png" id="9_x0bak"]
-[ext_resource type="Texture2D" uid="uid://cdwnl0mtnmwx5" path="res://visuals/Character/SP_Run_4.png" id="10_lulei"]
-[ext_resource type="Texture2D" uid="uid://kk57ivyboc6i" path="res://visuals/Character/SP_Slide.png" id="11_22xyk"]
-[ext_resource type="Texture2D" uid="uid://f1q5alhk8psb" path="res://visuals/Character/SP_Run_5.png" id="11_edtk3"]
+[ext_resource type="Texture2D" uid="uid://d0r3vc2yxw26" path="res://visuals/Character/young/SP_Dive.png" id="2_8rb0w"]
+[ext_resource type="Texture2D" uid="uid://beh01x34vu50r" path="res://visuals/Character/young/SP_Fall.png" id="3_sd3sa"]
+[ext_resource type="Texture2D" uid="uid://c54r0tmprgsg2" path="res://visuals/Character/young/SP_Idle_1.png" id="4_m2qjg"]
+[ext_resource type="Texture2D" uid="uid://dgeof7d7kqcbj" path="res://visuals/Character/young/SP_Run_0.png" id="6_22xyk"]
+[ext_resource type="Texture2D" uid="uid://cdijuqlqaqgph" path="res://visuals/Character/young/SP_Jump.png" id="6_x0bak"]
+[ext_resource type="Texture2D" uid="uid://v5vlgde7cx5b" path="res://visuals/Character/young/SP_Run_1.png" id="7_m2qjg"]
+[ext_resource type="Texture2D" uid="uid://b10f8kerkdvk1" path="res://visuals/Character/young/SP_Run_2.png" id="8_llb5v"]
+[ext_resource type="Texture2D" uid="uid://c4xcfsxlkgu1u" path="res://visuals/Character/young/SP_Run_3.png" id="9_x0bak"]
+[ext_resource type="Texture2D" uid="uid://cdwnl0mtnmwx5" path="res://visuals/Character/young/SP_Run_4.png" id="10_lulei"]
+[ext_resource type="Texture2D" uid="uid://kk57ivyboc6i" path="res://visuals/Character/young/SP_Slide.png" id="11_22xyk"]
+[ext_resource type="Texture2D" uid="uid://f1q5alhk8psb" path="res://visuals/Character/young/SP_Run_5.png" id="11_edtk3"]
+[ext_resource type="Texture2D" uid="uid://cei3dqjwr31rj" path="res://visuals/Character/young/SP_Run_6.png" id="12_r3tw4"]
+[ext_resource type="Texture2D" uid="uid://djwe68t4d4y0t" path="res://visuals/Character/old/SP_Old_Fall.png" id="14_cv2ms"]
+[ext_resource type="Texture2D" uid="uid://c6rvh50l7q0rf" path="res://visuals/Character/old/SP_Old_Run_1.png" id="14_nmymu"]
+[ext_resource type="Texture2D" uid="uid://blrj3k4lmudxw" path="res://visuals/Character/old/SP_Old_Idle_1.png" id="15_g56qp"]
+[ext_resource type="Texture2D" uid="uid://dcfw6ocmssbmi" path="res://visuals/Character/old/SP_Old_Run_2.png" id="15_gf0v6"]
+[ext_resource type="Texture2D" uid="uid://bkn21nxw7kwmv" path="res://visuals/Character/old/SP_Old_Jump.png" id="16_axxvs"]
+[ext_resource type="Texture2D" uid="uid://dnt5xid55xl27" path="res://visuals/Character/old/SP_Old_Run_3.png" id="16_cv2ms"]
+[ext_resource type="Texture2D" uid="uid://bke67ymjlcc22" path="res://visuals/Character/old/SP_Old_Run_4.png" id="17_g56qp"]
+[ext_resource type="Texture2D" uid="uid://c107cjh0pr6sn" path="res://visuals/Character/old/SP_Old_Run_5.png" id="18_axxvs"]
+[ext_resource type="Texture2D" uid="uid://bklg6naoees42" path="res://visuals/Character/old/SP_Old_Run_6.png" id="19_ay5dx"]
+[ext_resource type="Texture2D" uid="uid://bfthjgn7hbh1p" path="res://visuals/Character/old/SP_Old_Run_7.png" id="20_5loxu"]
+[ext_resource type="Texture2D" uid="uid://buxbh42ninyv7" path="res://visuals/Character/old/SP_Old_Slide.png" id="24_ay5dx"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xti4w"]
 radius = 55.0
@@ -56,6 +69,9 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("6_22xyk")
+}, {
+"duration": 1.0,
 "texture": ExtResource("7_m2qjg")
 }, {
 "duration": 1.0,
@@ -69,6 +85,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("11_edtk3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_r3tw4")
 }],
 "loop": 1,
 "name": &"run",
@@ -77,6 +96,75 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("11_22xyk")
+}],
+"loop": 1,
+"name": &"slide",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sh7kr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_8rb0w")
+}],
+"loop": 1,
+"name": &"dive",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_cv2ms")
+}],
+"loop": 1,
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_g56qp")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_axxvs")
+}],
+"loop": 1,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_nmymu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_gf0v6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_cv2ms")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_g56qp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_axxvs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_ay5dx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_5loxu")
+}],
+"loop": 1,
+"name": &"run",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("24_ay5dx")
 }],
 "loop": 1,
 "name": &"slide",
@@ -101,10 +189,19 @@ disabled = true
 
 [node name="Visual" type="Node2D" parent="." unique_id=418003249]
 
-[node name="Sprite" type="AnimatedSprite2D" parent="Visual" unique_id=226771862]
+[node name="Sprite_YoungRunner" type="AnimatedSprite2D" parent="Visual" unique_id=226771862]
 sprite_frames = SubResource("SpriteFrames_stj53")
-animation = &"idle"
+animation = &"run"
 autoplay = "idle"
+frame_progress = 0.9348268
+offset = Vector2(0, -128)
+
+[node name="SpriteSprite_OldRunner" type="AnimatedSprite2D" parent="Visual" unique_id=1468214603]
+visible = false
+sprite_frames = SubResource("SpriteFrames_sh7kr")
+animation = &"slide"
+autoplay = "idle"
+frame_progress = 0.9587522
 offset = Vector2(0, -128)
 
 [node name="CeilingCheck" type="ShapeCast2D" parent="." unique_id=280805867]

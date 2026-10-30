@@ -53,6 +53,8 @@ var game_time: float = 0.0
 var age: float = 0.0
 var age_ratio: float = 0.0
 
+var _is_player_old: bool = false
+
 
 func _ready() -> void:
 	assert(player != null, "GameManager : l'export player n'est pas assigné.")
@@ -80,6 +82,9 @@ func _update_age(delta: float) -> void:
 		_end_game(Ending.GOOD)
 	elif state == State.RUNNING and age_ratio >= 1.0:
 		_end_game(Ending.TOO_LATE)
+	if not _is_player_old and age >= age_threshold_min:
+		player.swap_sprite(true)
+		_is_player_old = true
 
 
 func _is_in_good_window() -> bool:

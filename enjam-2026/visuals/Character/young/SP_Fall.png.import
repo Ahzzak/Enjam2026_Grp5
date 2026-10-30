@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://f1q5alhk8psb"
-path="res://.godot/imported/SP_Run_5.png-9e5d7c2ce0d56489596dd619660b46c6.ctex"
+uid="uid://beh01x34vu50r"
+path="res://.godot/imported/SP_Fall.png-469072ada9af435619cc61dd4026e2f6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://visuals/Character/SP_Run_5.png"
-dest_files=["res://.godot/imported/SP_Run_5.png-9e5d7c2ce0d56489596dd619660b46c6.ctex"]
+source_file="res://visuals/Character/young/SP_Fall.png"
+dest_files=["res://.godot/imported/SP_Fall.png-469072ada9af435619cc61dd4026e2f6.ctex"]
 
 [params]
 
