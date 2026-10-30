@@ -192,7 +192,7 @@ disabled = true
 
 [node name="Sprite_YoungRunner" type="AnimatedSprite2D" parent="Visual" unique_id=226771862]
 sprite_frames = SubResource("SpriteFrames_stj53")
-animation = &"jump"
+animation = &"run"
 autoplay = "idle"
 offset = Vector2(0, -128)
 

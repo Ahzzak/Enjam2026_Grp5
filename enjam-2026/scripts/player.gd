@@ -227,6 +227,7 @@ func _try_jump() -> bool:
 	_time_since_on_floor = INF
 	state = State.AIR
 	_squash(jump_stretch)
+	$"../Audio_Manager".jump_sound()
 	return true
 
 

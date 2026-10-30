@@ -5,6 +5,9 @@ class_name Clock
 @export var player: Player
 @export var music : AudioStreamPlayer
 @export var playlist : Array[AudioStreamWAV]
+@export var slide : AudioStreamPlayer
+@export var run : AudioStreamPlayer
+@export var jump : AudioStreamPlayer
 
 var bpm : int = 144
 var clock128 : float
@@ -14,6 +17,7 @@ var last_time : float
 var is_slowed : bool
 var part_loop : int = 0
 var is_msc_started : bool = false
+var tween : Tween
 
 signal on_beat
 signal on_end_part
@@ -34,6 +38,23 @@ func _process(delta: float) -> void:
 	
 	if !is_instance_valid(music): return
 	music.pitch_scale = maxf(Engine.time_scale, 0.01)
+
+	match player.state:
+		player.State.RUN:
+			slide.volume_db = -80
+		player.State.SLIDE:
+			tween = create_tween()
+			tween.tween_property(slide,"volume_db", -20, 0.2)
+			tween.tween_property(slide,"volume_db", -60, 1)
+	
+	if Input.is_action_just_released("Slide"):
+		tween.kill()
+		slide.volume_db = -80
+	slide.pitch_scale = clamp(remap(player.velocity.x, 500, 1500, 1, 2), 1.2, 1.5)
+	slide.volume_db += clampf(player.velocity.x, -40, 0)
+
+func jump_sound():
+	$Jump.play()
 
 func start_music():
 	if is_msc_started:
@@ -59,6 +80,9 @@ func check_beat() -> void:
 	if beat % 8 == 1:
 		check_bar(bar)
 	if beat == 10: delay_music.emit()
+	
+	if player.state == player.State.RUN:
+		run.play()
 
 func check_bar(bar : int):
 	var transitions : Array[int] = [8, 16, 24, 30, 34, 38, 42, 46, 56, 64, 71]
@@ -76,6 +100,8 @@ func _on_music_finished() -> void:
 	on_end_part.emit()
 
 func stop(_ending, _age):
+	slide.stop()
+	run.stream = null
 	var tween : Tween = create_tween()
 	tween.tween_property(music, "pitch_scale", 0, 3)
 	music.stop()
