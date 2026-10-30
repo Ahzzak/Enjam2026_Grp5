@@ -1,6 +1,7 @@
 extends Node
 class_name Clock
 
+@export var game_manager : GameManager
 @export var player: Player
 @export var music : AudioStreamPlayer
 @export var playlist : Array[AudioStreamWAV]
@@ -20,6 +21,7 @@ signal delay_music
 
 func _enter_tree() -> void:
 	player.run_resumed.connect(start_music)
+	game_manager.game_ended.connect(stop)
 
 func _process(delta: float) -> void:
 	if !is_msc_started: return
@@ -30,6 +32,7 @@ func _process(delta: float) -> void:
 		check_beat()
 	last_time = curr_time
 	
+	if !is_instance_valid(music): return
 	music.pitch_scale = maxf(Engine.time_scale, 0.01)
 
 func start_music():
@@ -39,7 +42,9 @@ func start_music():
 		curr_time = 0
 		is_msc_started = true
 		await delay_music
+		if !is_instance_valid(music) : return
 		music.play()
+		music.pitch_scale = 1
 
 func check_beat() -> void:
 	var bar : int = curr_time / 4 / 2
@@ -56,7 +61,7 @@ func check_beat() -> void:
 	if beat == 10: delay_music.emit()
 
 func check_bar(bar : int):
-	var transitions : Array[int] = [8, 16, 24, 30, 34, 38, 46, 56, 64, 71]
+	var transitions : Array[int] = [8, 16, 24, 30, 34, 38, 42, 46, 56, 64, 71]
 	if bar in transitions:
 		on_end_part.emit()
 
@@ -69,3 +74,9 @@ func _on_music_finished() -> void:
 	music.stream = playlist.get(part_loop)
 	music.play()
 	on_end_part.emit()
+
+func stop(_ending, _age):
+	var tween : Tween = create_tween()
+	tween.tween_property(music, "pitch_scale", 0, 3)
+	music.stop()
+	music.queue_free()

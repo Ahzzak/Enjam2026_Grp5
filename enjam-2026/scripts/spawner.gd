@@ -26,7 +26,6 @@ func spawn(bar : int, beat : int):
 	_free_passed_obstacles()
 	if bar > 72: return
 	var type = leveldesign.get(music_part).get(beat)
-	print(leveldesign.get(music_part).get(0))
 	var obstacle : Node2D
 	match type:
 		"Jump":
